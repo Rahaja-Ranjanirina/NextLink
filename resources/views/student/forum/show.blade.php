@@ -36,7 +36,7 @@
         right: 0;
         bottom: 0;
         z-index: 0;
-        background: linear-gradient(145deg, #070b17 0%, #0f1322 50%, #0a0e1a 100%);
+        background: var(--bg-primary);
     }
     
     .forum-show-bg::before {
@@ -47,7 +47,7 @@
         right: 0;
         bottom: 0;
         background: url('https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2') center/cover no-repeat;
-        opacity: 0.08;
+        opacity: var(--bg-overlay-image-opacity, 0.08);
         pointer-events: none;
     }
     
@@ -79,11 +79,11 @@
         align-items: center;
         gap: 8px;
         font-size: 12px;
-        color: #6b7280;
+        color: var(--text-secondary);
     }
     
     .breadcrumb a {
-        color: #a5b4fc;
+        color: var(--badge-text);
         text-decoration: none;
         transition: color 0.2s;
         font-weight: 500;
@@ -100,11 +100,11 @@
     }
     
     .btn-back {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--btn-secondary-bg);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 100px;
         padding: 7px 18px;
-        color: #d1d5db;
+        color: var(--btn-secondary-color);
         font-size: 12px;
         font-weight: 500;
         text-decoration: none;
@@ -121,7 +121,7 @@
     
     .btn-back:hover {
         background: rgba(255, 255, 255, 0.1);
-        color: white;
+        color: var(--text-primary);
         transform: translateX(-2px);
     }
     
@@ -129,7 +129,7 @@
     .topic-info {
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 20px;
         padding: 14px 20px;
         flex-shrink: 0;
@@ -137,8 +137,8 @@
     }
     
     .topic-badge {
-        background: rgba(99, 102, 241, 0.15);
-        border: 1px solid rgba(99, 102, 241, 0.25);
+        background: var(--badge-bg);
+        border: 1px solid var(--badge-border);
         border-radius: 100px;
         padding: 3px 12px;
         display: inline-flex;
@@ -148,7 +148,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         margin-bottom: 10px;
     }
     
@@ -160,7 +160,7 @@
     .topic-title {
         font-size: 19px;
         font-weight: 700;
-        color: white;
+        color: var(--text-primary);
         margin-bottom: 10px;
         line-height: 1.35;
     }
@@ -171,7 +171,7 @@
         align-items: center;
         gap: 12px;
         font-size: 11px;
-        color: #6b7280;
+        color: var(--text-secondary);
         padding-top: 10px;
         border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
@@ -186,17 +186,17 @@
         width: 26px;
         height: 26px;
         border-radius: 10px;
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 11px;
         font-weight: 600;
-        color: white;
+        color: var(--text-primary);
     }
     
     .topic-author-name {
-        color: #a5b4fc;
+        color: var(--badge-text);
         font-weight: 500;
         font-size: 12px;
     }
@@ -211,7 +211,7 @@
     .messages-container {
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 20px;
         padding: 18px;
         flex: 1;
@@ -225,12 +225,12 @@
     }
     
     .messages-container::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--scrollbar-track);
         border-radius: 10px;
     }
     
     .messages-container::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 10px;
     }
     
@@ -247,13 +247,13 @@
     }
     
     .message-item.my-message .message-content {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 20px 20px 6px 20px;
         border: none;
     }
     
     .message-item.my-message .message-text {
-        color: white;
+        color: var(--text-primary);
     }
     
     .message-item.my-message .message-time {
@@ -272,15 +272,15 @@
     .message-item.other-message .message-content {
         background: rgba(255, 255, 255, 0.06);
         border-radius: 20px 20px 20px 6px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--btn-secondary-border);
     }
     
     .message-item.other-message .message-text {
-        color: #e8edf2;
+        color: var(--input-text);
     }
     
     .message-item.other-message .message-time {
-        color: #6b7280;
+        color: var(--text-secondary);
     }
     
     /* Message Bubble */
@@ -301,7 +301,7 @@
     
     .message-author {
         font-weight: 600;
-        color: #a5b4fc;
+        color: var(--badge-text);
         font-size: 11px;
     }
     
@@ -352,7 +352,7 @@
         background: rgba(255, 255, 255, 0.06);
         border-radius: 12px;
         font-size: 11px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         text-decoration: none;
         transition: all 0.2s;
         font-weight: 500;
@@ -365,7 +365,7 @@
     
     .msg-attach-file:hover {
         background: rgba(99, 102, 241, 0.2);
-        color: white;
+        color: var(--text-primary);
         transform: translateY(-1px);
     }
     
@@ -380,7 +380,7 @@
     .reply-form-container {
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 20px;
         padding: 14px 18px;
         flex-shrink: 0;
@@ -389,7 +389,7 @@
     .form-title {
         font-size: 13px;
         font-weight: 600;
-        color: white;
+        color: var(--text-primary);
         margin-bottom: 10px;
         display: flex;
         align-items: center;
@@ -399,16 +399,16 @@
     .form-title svg {
         width: 16px;
         height: 16px;
-        color: #a5b4fc;
+        color: var(--badge-text);
     }
     
     .reply-input {
         width: 100%;
-        background: rgba(10, 12, 16, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--input-bg-focus);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 18px;
         padding: 12px 16px;
-        color: #e8edf2;
+        color: var(--input-text);
         font-size: 13px;
         resize: none;
         transition: all 0.2s;
@@ -417,7 +417,7 @@
     
     .reply-input:focus {
         outline: none;
-        border-color: #6366f1;
+        border-color: var(--accent-primary);
         box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
     }
     
@@ -443,7 +443,7 @@
         border-radius: 100px;
         font-size: 12px;
         font-weight: 500;
-        color: #9ca3af;
+        color: var(--text-muted);
         cursor: pointer;
         transition: all 0.2s;
     }
@@ -454,8 +454,8 @@
     }
     
     .attach-label:hover {
-        background: rgba(99, 102, 241, 0.15);
-        color: #a5b4fc;
+        background: var(--badge-bg);
+        color: var(--badge-text);
     }
     
     .file-input-hidden {
@@ -473,12 +473,12 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(99, 102, 241, 0.15);
+        background: var(--badge-bg);
         padding: 4px 12px;
         border-radius: 100px;
         font-size: 11px;
         font-weight: 500;
-        color: #a5b4fc;
+        color: var(--badge-text);
     }
     
     .file-tag svg {
@@ -487,9 +487,9 @@
     }
     
     .btn-send {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 8px 24px;
         border-radius: 100px;
@@ -537,7 +537,7 @@
     .empty-messages {
         text-align: center;
         padding: 40px 24px;
-        color: #6b7280;
+        color: var(--text-secondary);
         font-size: 13px;
     }
     
@@ -583,7 +583,7 @@
         right: 0;
         background: rgba(255, 255, 255, 0.1);
         border: none;
-        color: white;
+        color: var(--text-primary);
         padding: 6px 16px;
         border-radius: 100px;
         cursor: pointer;

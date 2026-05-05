@@ -21,7 +21,7 @@
         right: 0;
         bottom: 0;
         z-index: 0;
-        background: linear-gradient(145deg, #070b17 0%, #0f1322 50%, #0a0e1a 100%);
+        background: var(--bg-primary);
     }
     
     .forum-create-bg::before {
@@ -32,7 +32,7 @@
         right: 0;
         bottom: 0;
         background: url('https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2') center/cover no-repeat;
-        opacity: 0.08;
+        opacity: var(--bg-overlay-image-opacity, 0.08);
         pointer-events: none;
     }
     
@@ -48,7 +48,7 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         text-decoration: none;
         font-size: 13px;
         margin-bottom: 32px;
@@ -61,9 +61,9 @@
     }
     
     .form-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 28px;
         padding: 32px;
     }
@@ -71,14 +71,14 @@
     .form-title {
         font-size: 28px;
         font-weight: 700;
-        background: linear-gradient(135deg, #ffffff, #a5b4fc);
+        background: var(--title-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 8px;
     }
     
     .form-subtitle {
-        color: #9ca3af;
+        color: var(--text-muted);
         font-size: 14px;
         margin-bottom: 32px;
     }
@@ -89,44 +89,44 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        color: #9ca3af;
+        color: var(--text-muted);
         margin-bottom: 8px;
     }
     
     .form-input, .form-textarea {
         width: 100%;
-        background: rgba(10, 12, 16, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--input-bg);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 16px;
         padding: 12px 16px;
-        color: #e8edf2;
+        color: var(--input-text);
         font-size: 14px;
         transition: all 0.2s;
     }
     
     .form-input:focus, .form-textarea:focus {
         outline: none;
-        border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px var(--accent-light);
     }
     
     .file-attach-label {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--btn-secondary-bg);
         padding: 8px 16px;
         border-radius: 100px;
         font-size: 12px;
-        color: #9ca3af;
+        color: var(--text-muted);
         cursor: pointer;
         transition: all 0.2s;
         margin-top: 8px;
     }
     
     .file-attach-label:hover {
-        background: rgba(99, 102, 241, 0.15);
-        color: #a5b4fc;
+        background: var(--badge-bg);
+        color: var(--badge-text);
     }
     
     .file-input-hidden {
@@ -141,11 +141,11 @@
     }
     
     .file-tag {
-        background: rgba(99, 102, 241, 0.15);
+        background: var(--badge-bg);
         padding: 4px 12px;
         border-radius: 100px;
         font-size: 11px;
-        color: #a5b4fc;
+        color: var(--badge-text);
     }
     
     .btn-group {
@@ -158,25 +158,25 @@
     }
     
     .btn-cancel {
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--btn-secondary-bg);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 100px;
         padding: 10px 24px;
-        color: #d1d5db;
+        color: var(--btn-secondary-color);
         font-size: 13px;
         text-decoration: none;
         transition: all 0.2s;
     }
     
     .btn-cancel:hover {
-        background: rgba(255, 255, 255, 0.08);
-        color: white;
+        background: var(--btn-secondary-hover-bg);
+        color: var(--text-primary);
     }
     
     .btn-submit {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 10px 28px;
         border-radius: 100px;

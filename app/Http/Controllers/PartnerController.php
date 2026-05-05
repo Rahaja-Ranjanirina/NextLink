@@ -120,7 +120,7 @@ class PartnerController extends Controller
             'statut' => 'vue',
         ]);
 
-        $message = 'Votre candidature pour "' . $offre->titre . '" a reçu une réponse de l’entreprise.';
+        $message = 'Votre candidature pour "' . $offre->titre . '" a reçu une réponse de l\'entreprise.';
         if (! empty($validated['partner_message'])) {
             $message .= ' ' . Str::limit($validated['partner_message'], 120);
         }
@@ -132,7 +132,7 @@ class PartnerController extends Controller
             $candidature
         );
 
-        return back()->with('success', 'La proposition d’entretien a bien été envoyée.');
+        return back()->with('success', "La proposition d'entretien a bien été envoyée.");
     }
 
     public function notifications()
@@ -164,6 +164,14 @@ class PartnerController extends Controller
         }
 
         $path = $candidature->{$type};
+
+        if (!$path && $type === 'cv') {
+            $student = $candidature->etudiant; // C'est un User
+            $cv = \App\Models\Cv::where('student_id', $student->id)->first();
+            if ($cv) {
+                return view('student.cv_pdf', compact('cv', 'student'));
+            }
+        }
 
         abort_unless($path, 404);
 

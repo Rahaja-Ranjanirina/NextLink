@@ -23,6 +23,7 @@ class Student extends Authenticatable
         'phone',
         'photo',
         'is_active',
+        'is_moderator',
     ];
 
     protected $hidden = [
@@ -34,6 +35,7 @@ class Student extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'is_active' => 'boolean',
+        'is_moderator' => 'boolean',
     ];
 
     protected static function booted(): void

@@ -23,7 +23,7 @@
         right: 0;
         bottom: 0;
         z-index: 0;
-        background: linear-gradient(145deg, #070b17 0%, #0f1322 50%, #0a0e1a 100%);
+        background: var(--bg-primary);
     }
     
     .candidature-bg::before {
@@ -34,7 +34,7 @@
         right: 0;
         bottom: 0;
         background: url('https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2') center/cover no-repeat;
-        opacity: 0.08;
+        opacity: var(--bg-overlay-image-opacity, 0.08);
         pointer-events: none;
     }
     
@@ -45,7 +45,7 @@
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+        background: radial-gradient(circle at 30% 40%, var(--accent-light) 0%, transparent 50%);
         pointer-events: none;
     }
     
@@ -64,8 +64,8 @@
     }
     
     .page-badge {
-        background: rgba(99, 102, 241, 0.15);
-        border: 1px solid rgba(99, 102, 241, 0.25);
+        background: var(--badge-bg);
+        border: 1px solid var(--badge-border);
         border-radius: 100px;
         padding: 4px 16px;
         display: inline-block;
@@ -73,7 +73,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         margin-bottom: 16px;
     }
     
@@ -81,7 +81,7 @@
         font-size: 42px;
         font-weight: 800;
         line-height: 1.2;
-        background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 50%, #a5b4fc 100%);
+        background: var(--title-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -89,7 +89,7 @@
     }
     
     .page-subtitle {
-        color: rgba(156, 163, 175, 0.8);
+        color: var(--text-secondary);
         font-size: 16px;
         font-weight: 400;
     }
@@ -115,24 +115,24 @@
     .divider-line {
         flex: 1;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+        background: var(--divider-glow);
     }
     
     .divider-dot {
         width: 5px;
         height: 5px;
-        background: #6366f1;
+        background: var(--accent-primary);
         border-radius: 50%;
         opacity: 0.5;
     }
     
     /* Buttons */
     .btn-back {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--btn-secondary-bg);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 100px;
         padding: 12px 28px;
-        color: #d1d5db;
+        color: var(--btn-secondary-color);
         font-size: 13px;
         font-weight: 600;
         text-decoration: none;
@@ -144,14 +144,14 @@
     
     .btn-back:hover {
         background: rgba(255, 255, 255, 0.1);
-        color: white;
+        color: var(--text-primary);
         transform: translateY(-2px);
     }
     
     .btn-submit {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 12px 32px;
         border-radius: 100px;
@@ -171,7 +171,7 @@
     .btn-jitsi {
         background: linear-gradient(135deg, #10b981 0%, #059669 100%);
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 12px 32px;
         border-radius: 100px;
@@ -190,22 +190,22 @@
     
     /* Cards */
     .info-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 24px;
         padding: 24px;
         transition: all 0.3s ease;
     }
     
     .info-card:hover {
-        border-color: rgba(99, 102, 241, 0.3);
+        border-color: var(--card-border-hover);
     }
     
     .card-title {
         font-size: 18px;
         font-weight: 600;
-        color: white;
+        color: var(--text-primary);
         margin-bottom: 20px;
         display: flex;
         align-items: center;
@@ -217,7 +217,7 @@
     .card-title svg {
         width: 20px;
         height: 20px;
-        color: #a5b4fc;
+        color: var(--badge-text);
     }
     
     /* Info list */
@@ -232,11 +232,11 @@
         align-items: baseline;
         gap: 8px;
         font-size: 14px;
-        color: #d1d5db;
+        color: var(--btn-secondary-color);
     }
     
     .info-item strong {
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         min-width: 100px;
     }
@@ -272,7 +272,7 @@
     
     /* Section profil */
     .profil-section {
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--scrollbar-track);
         border-radius: 16px;
         padding: 16px;
         margin-top: 16px;
@@ -283,21 +283,21 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         margin-bottom: 8px;
     }
     
     .profil-text {
         font-size: 13px;
-        color: #d1d5db;
+        color: var(--btn-secondary-color);
         line-height: 1.5;
     }
     
     /* Form */
     .form-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 28px;
         padding: 32px;
         margin-top: 32px;
@@ -306,7 +306,7 @@
     .form-title {
         font-size: 22px;
         font-weight: 700;
-        color: white;
+        color: var(--text-primary);
         margin-bottom: 24px;
         display: flex;
         align-items: center;
@@ -326,25 +326,25 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        color: #9ca3af;
+        color: var(--text-muted);
         margin-bottom: 8px;
     }
     
     .form-input, .form-textarea {
         width: 100%;
-        background: rgba(10, 12, 16, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--input-bg-focus);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 16px;
         padding: 12px 16px;
-        color: #e8edf2;
+        color: var(--input-text);
         font-size: 14px;
         transition: all 0.2s ease;
     }
     
     .form-input:focus, .form-textarea:focus {
         outline: none;
-        border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px var(--accent-light);
     }
     
     .form-textarea {
@@ -369,9 +369,9 @@
     
     /* History card */
     .history-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 24px;
         padding: 24px;
         margin-top: 24px;
@@ -426,12 +426,12 @@
     }
     
     ::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--scrollbar-track);
         border-radius: 10px;
     }
     
     ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 10px;
     }
 </style>
@@ -449,7 +449,12 @@
         </div>
 
         <div class="header-actions">
-            <div></div>
+            <a href="{{ route('partner.dashboard') }}" class="btn-back">
+                <svg class="w-4 h-4" style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                Tableau de bord
+            </a>
             <a href="{{ route('partner.offres.candidatures', $offre) }}" class="btn-back">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>

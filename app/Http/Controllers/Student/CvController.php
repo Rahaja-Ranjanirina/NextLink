@@ -12,8 +12,8 @@ class CvController extends Controller
 {
     public function dashboard()
     {
-        $student = Auth::user();
-        $cv = $student->cv;
+        $student = auth()->guard('student')->user();
+        $cv = $student->cv ?? null;
 
         return view('student.dashboard', compact('student', 'cv'));
     }

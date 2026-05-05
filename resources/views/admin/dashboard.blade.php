@@ -31,14 +31,14 @@
     
     /* Background */
     .admin-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-    background: var(--bg-primary);
-}
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        background: var(--bg-primary);
+    }
     
     .admin-bg::before {
         content: '';
@@ -48,7 +48,7 @@
         right: 0;
         bottom: 0;
         background: url('https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2') center/cover no-repeat;
-        opacity: 0.08;
+        opacity: var(--bg-overlay-image-opacity, 0.08);
         pointer-events: none;
     }
     
@@ -59,16 +59,16 @@
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+        background: radial-gradient(circle at 30% 40%, var(--accent-light) 0%, transparent 50%);
         pointer-events: none;
     }
     
     /* ========== SIDEBAR ========== */
     .admin-sidebar {
         width: 280px;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        background: var(--nav-bg);
         backdrop-filter: blur(12px);
-        border-right: 1px solid rgba(255, 255, 255, 0.06);
+        border-right: 1px solid var(--divider);
         display: flex;
         flex-direction: column;
         position: relative;
@@ -83,18 +83,18 @@
     }
     
     .admin-sidebar::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--scrollbar-track);
     }
     
     .admin-sidebar::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 10px;
     }
     
     /* Sidebar Header */
     .sidebar-header {
         padding: 24px 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid var(--divider);
         margin-bottom: 20px;
     }
     
@@ -107,7 +107,7 @@
     .sidebar-logo-icon {
         width: 40px;
         height: 40px;
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -117,18 +117,18 @@
     .sidebar-logo-icon svg {
         width: 22px;
         height: 22px;
-        color: white;
+        color: var(--text-primary);
     }
     
     .sidebar-logo-text h2 {
         font-size: 18px;
         font-weight: 700;
-        color: white;
+        color: var(--text-primary);
     }
     
     .sidebar-logo-text p {
         font-size: 10px;
-        color: #9ca3af;
+        color: var(--text-secondary);
     }
     
     /* Sidebar Navigation */
@@ -146,7 +146,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: #6b7280;
+        color: var(--text-muted);
         padding: 0 12px;
         margin-bottom: 12px;
     }
@@ -157,7 +157,7 @@
         gap: 12px;
         padding: 12px 16px;
         border-radius: 14px;
-        color: #9ca3af;
+        color: var(--nav-link-color);
         text-decoration: none;
         transition: all 0.2s ease;
         margin-bottom: 4px;
@@ -171,20 +171,20 @@
     }
     
     .nav-item:hover {
-        background: rgba(99, 102, 241, 0.1);
-        color: #c7d2fe;
+        background: var(--nav-link-hover-bg);
+        color: var(--nav-link-hover-color);
     }
     
     .nav-item.active {
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));
-        color: #a5b4fc;
-        border: 1px solid rgba(99, 102, 241, 0.25);
+        background: var(--nav-active-bg);
+        color: var(--nav-active-color);
+        border: 1px solid var(--accent-border);
     }
     
     .nav-icon {
         width: 32px;
         height: 32px;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--nav-icon-bg);
         border-radius: 10px;
         display: flex;
         align-items: center;
@@ -199,7 +199,7 @@
     /* Sidebar Footer */
     .sidebar-footer {
         padding: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-top: 1px solid var(--divider);
         margin-top: auto;
     }
     
@@ -209,20 +209,20 @@
         gap: 12px;
         padding: 12px 16px;
         border-radius: 14px;
-        color: #f87171;
+        color: var(--btn-logout-color);
         text-decoration: none;
         transition: all 0.2s ease;
         font-size: 13px;
         font-weight: 500;
-        background: rgba(239, 68, 68, 0.08);
-        border: 1px solid rgba(239, 68, 68, 0.15);
+        background: var(--btn-logout-bg);
+        border: 1px solid var(--btn-logout-border);
         width: 100%;
         cursor: pointer;
     }
     
     .logout-sidebar:hover {
-        background: rgba(239, 68, 68, 0.15);
-        color: #fca5a5;
+        background: var(--btn-logout-hover-bg);
+        color: var(--error);
     }
     
     /* ========== MAIN CONTENT ========== */
@@ -239,12 +239,12 @@
     }
     
     .admin-main::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--scrollbar-track);
         border-radius: 10px;
     }
     
     .admin-main::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 10px;
     }
     
@@ -255,13 +255,13 @@
         align-items: center;
         margin-bottom: 24px;
         padding-bottom: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid var(--divider);
     }
     
     .main-title {
         font-size: 24px;
         font-weight: 700;
-        background: linear-gradient(135deg, #ffffff, #a5b4fc);
+        background: var(--title-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -271,7 +271,7 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        background: rgba(255, 255, 255, 0.04);
+        background: var(--nav-icon-bg);
         padding: 8px 16px;
         border-radius: 100px;
     }
@@ -279,21 +279,25 @@
     .user-avatar {
         width: 32px;
         height: 32px;
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 12px;
         font-weight: 600;
-        color: white;
+        color: var(--text-primary);
     }
     
+    .user-name {
+        color: var(--text-primary);
+    }
+
     /* Content Card */
     .content-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 24px;
         padding: 24px;
     }
@@ -308,25 +312,26 @@
     
     .form-input {
         width: 100%;
-        background: rgba(10, 12, 16, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--input-bg);
+        border: 1px solid var(--input-border);
         border-radius: 16px;
         padding: 12px 16px;
-        color: #e8edf2;
+        color: var(--input-text);
         font-size: 14px;
         transition: all 0.2s ease;
     }
     
     .form-input:focus {
         outline: none;
-        border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px var(--accent-light);
+        background: var(--input-bg-focus);
     }
     
     .btn-primary {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 12px 24px;
         border-radius: 100px;
@@ -356,8 +361,8 @@
     }
     
     .data-table thead tr {
-        background: rgba(0, 0, 0, 0.3);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--nav-icon-bg);
+        border-bottom: 1px solid var(--divider);
     }
     
     .data-table th {
@@ -367,17 +372,17 @@
         text-transform: uppercase;
         font-size: 11px;
         letter-spacing: 0.5px;
-        color: #9ca3af;
+        color: var(--text-secondary);
     }
     
     .data-table td {
         padding: 12px 16px;
-        color: #e8edf2;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+        border-bottom: 1px solid var(--divider);
     }
     
     .data-table tr:hover td {
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--nav-icon-bg);
     }
     
     /* Dropdown Menu */
@@ -389,7 +394,7 @@
     .dropdown-btn {
         background: none;
         border: none;
-        color: #9ca3af;
+        color: var(--text-secondary);
         cursor: pointer;
         padding: 8px;
         border-radius: 8px;
@@ -400,17 +405,17 @@
     }
     
     .dropdown-btn:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
+        background: var(--nav-icon-bg);
+        color: var(--text-primary);
     }
     
     .dropdown-content {
         display: none;
         position: absolute;
         right: 0;
-        background: linear-gradient(135deg, #0f1222, #0a0e1a);
+        background: var(--modal-bg);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--modal-border);
         border-radius: 12px;
         min-width: 200px;
         z-index: 10;
@@ -426,7 +431,7 @@
         align-items: center;
         gap: 10px;
         padding: 10px 16px;
-        color: #d1d5db;
+        color: var(--text-primary);
         text-decoration: none;
         font-size: 13px;
         transition: all 0.2s;
@@ -438,12 +443,12 @@
     }
     
     .dropdown-item:hover {
-        background: rgba(99, 102, 241, 0.15);
-        color: #a5b4fc;
+        background: var(--accent-light);
+        color: var(--accent-hover);
     }
     
     .dropdown-item.moderator {
-        color: #fbbf24;
+        color: var(--warning);
     }
     
     .dropdown-item.moderator:hover {
@@ -452,7 +457,7 @@
     }
     
     .dropdown-item.remove {
-        color: #f87171;
+        color: var(--error);
     }
     
     .dropdown-item.remove:hover {
@@ -464,18 +469,18 @@
         display: inline-flex;
         align-items: center;
         gap: 4px;
-        background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.08));
+        background: rgba(245, 158, 11, 0.15);
         border: 1px solid rgba(245, 158, 11, 0.25);
         border-radius: 100px;
         padding: 2px 8px;
         font-size: 10px;
         font-weight: 600;
-        color: #fbbf24;
+        color: var(--warning);
         margin-left: 8px;
     }
     
     .action-edit {
-        color: #a5b4fc;
+        color: var(--accent-hover);
         text-decoration: none;
         margin-right: 12px;
         font-size: 12px;
@@ -483,13 +488,13 @@
     }
     
     .action-edit:hover {
-        color: white;
+        color: var(--text-primary);
     }
     
     .action-delete {
         background: none;
         border: none;
-        color: #f87171;
+        color: var(--error);
         cursor: pointer;
         font-size: 12px;
         padding: 0;
@@ -509,7 +514,7 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        color: #4ade80;
+        color: var(--success);
         font-size: 13px;
     }
     
@@ -528,7 +533,7 @@
     }
     
     .error-list li {
-        color: #f87171;
+        color: var(--error);
         font-size: 13px;
         margin-bottom: 4px;
     }
@@ -564,19 +569,19 @@
     .section-title {
         font-size: 20px;
         font-weight: 600;
-        color: white;
+        color: var(--text-primary);
         margin-bottom: 20px;
         display: flex;
         align-items: center;
         gap: 10px;
         padding-bottom: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid var(--divider);
     }
     
     .section-title svg {
         width: 22px;
         height: 22px;
-        color: #a5b4fc;
+        color: var(--accent-hover);
     }
 </style>
 
@@ -739,7 +744,7 @@
                                         Modérateur
                                     </span>
                                 @else
-                                    <span class="moderator-badge" style="background: rgba(107, 114, 128, 0.15); border-color: rgba(107, 114, 128, 0.25); color: #9ca3af;">
+                                    <span class="moderator-badge" style="background: rgba(107, 114, 128, 0.15); border-color: rgba(107, 114, 128, 0.25); color: var(--text-muted);">
                                         Standard
                                     </span>
                                 @endif
@@ -794,7 +799,7 @@
                             </td>
                         </tr>
                         @empty
-                            <tr><td colspan="6" style="text-align: center; padding: 40px; color: #6b7280;">Aucun étudiant enregistré</td></tr>
+                            <tr><td colspan="6" style="text-align: center; padding: 40px; color: var(--text-secondary);">Aucun étudiant enregistré</td></tr>
                         @endforelse
                     </tbody>
                 </table>
@@ -851,7 +856,7 @@
                                         Modérateur
                                     </span>
                                 @else
-                                    <span class="moderator-badge" style="background: rgba(107, 114, 128, 0.15); border-color: rgba(107, 114, 128, 0.25); color: #9ca3af;">
+                                    <span class="moderator-badge" style="background: rgba(107, 114, 128, 0.15); border-color: rgba(107, 114, 128, 0.25); color: var(--text-muted);">
                                         Standard
                                     </span>
                                 @endif
@@ -906,7 +911,7 @@
                             </td>
                         </tr>
                         @empty
-                            <tr><td colspan="5" style="text-align: center; padding: 40px; color: #6b7280;">Aucun enseignant enregistré</td></tr>
+                            <tr><td colspan="5" style="text-align: center; padding: 40px; color: var(--text-secondary);">Aucun enseignant enregistré</td></tr>
                         @endforelse
                     </tbody>
                 </table>
@@ -951,7 +956,7 @@
                             <td>{{ $partner->email }}</td>
                         </tr>
                         @empty
-                            <tr><td colspan="2" style="text-align: center; padding: 40px; color: #6b7280;">Aucun partenaire enregistré</td></tr>
+                            <tr><td colspan="2" style="text-align: center; padding: 40px; color: var(--text-secondary);">Aucun partenaire enregistré</td></tr>
                         @endforelse
                     </tbody>
                 </table>

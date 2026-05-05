@@ -24,16 +24,6 @@ class DashboardController extends Controller
    public function index()
 {
     $students = Student::with('etudiant')->get();
-    
-    // Debug - afficher la valeur de is_moderator pour le premier étudiant
-    \Log::info('Test is_moderator', [
-        'first_student' => $students->first() ? [
-            'id' => $students->first()->id,
-            'name' => $students->first()->name,
-            'is_moderator' => $students->first()->is_moderator
-        ] : 'no student'
-    ]);
-    
     $partners = Partner::all();
     $enseignants = User::where('role', 'enseignant')->get();
 

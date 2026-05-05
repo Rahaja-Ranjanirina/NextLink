@@ -6,7 +6,7 @@
         height: 500px;
         overflow-y: auto;
         padding: 20px;
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--scrollbar-track);
         border-radius: 20px;
     }
     
@@ -15,12 +15,12 @@
     }
     
     .messages-container::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--btn-secondary-bg);
         border-radius: 10px;
     }
     
     .messages-container::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 10px;
     }
     
@@ -33,18 +33,18 @@
     }
     
     .message-my {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        color: white;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: var(--text-primary);
         margin-left: auto;
         border-bottom-right-radius: 4px;
     }
     
     .message-other {
-        background: rgba(255, 255, 255, 0.08);
-        color: #e8edf2;
+        background: var(--btn-secondary-hover-bg);
+        color: var(--input-text);
         margin-right: auto;
         border-bottom-left-radius: 4px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--btn-secondary-border);
     }
     
     .message-time {
@@ -73,7 +73,7 @@
     
     .attach-image:hover {
         transform: scale(1.05);
-        border-color: #6366f1;
+        border-color: var(--accent-primary);
     }
     
     .attach-image img {
@@ -87,23 +87,23 @@
         align-items: center;
         gap: 6px;
         padding: 6px 12px;
-        background: rgba(255, 255, 255, 0.08);
+        background: var(--btn-secondary-hover-bg);
         border-radius: 10px;
         font-size: 11px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         text-decoration: none;
         transition: all 0.2s;
     }
     
     .attach-file:hover {
         background: rgba(99, 102, 241, 0.2);
-        color: white;
+        color: var(--text-primary);
     }
     
     .btn-send {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 10px 24px;
         border-radius: 100px;
@@ -118,26 +118,26 @@
     
     .form-textarea {
         width: 100%;
-        background: rgba(10, 12, 16, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--input-bg-focus);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 16px;
         padding: 12px 16px;
-        color: #e8edf2;
+        color: var(--input-text);
         font-size: 14px;
         resize: vertical;
     }
     
     .form-textarea:focus {
         outline: none;
-        border-color: #6366f1;
+        border-color: var(--accent-primary);
     }
     
     .file-tag {
-        background: rgba(99, 102, 241, 0.15);
+        background: var(--badge-bg);
         padding: 4px 12px;
         border-radius: 100px;
         font-size: 11px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         display: inline-flex;
         align-items: center;
         gap: 6px;
@@ -151,14 +151,14 @@
         padding: 8px 16px;
         border-radius: 100px;
         font-size: 12px;
-        color: #9ca3af;
+        color: var(--text-muted);
         cursor: pointer;
         transition: all 0.2s;
     }
     
     .attach-label:hover {
-        background: rgba(99, 102, 241, 0.15);
-        color: #a5b4fc;
+        background: var(--badge-bg);
+        color: var(--badge-text);
     }
     
     .flash-message {

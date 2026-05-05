@@ -61,30 +61,25 @@ class EnseignantController extends Controller
     }
 
     // ────────────────────────────────────────────────────────
-    // Profil étudiant (pour modérateurs)
+    // Profil étudiant
     // ────────────────────────────────────────────────────────
     /**
-     * Afficher le profil d'un étudiant (pour les modérateurs)
+     * Afficher le profil d'un étudiant (accessible à tout enseignant)
      */
- /**
- * Afficher le profil d'un étudiant
- */
-public function showStudentProfile(User $user)
-{
-    // Vérifier que l'utilisateur connecté est un enseignant (pas besoin d'être modérateur)
-    if (!Auth::user()->isEnseignant()) {
-        abort(403, 'Accès non autorisé.');
+    public function showStudentProfile(User $user)
+    {
+        if (!Auth::user()->isEnseignant()) {
+            abort(403, 'Accès non autorisé.');
+        }
+
+        if ($user->role !== 'etudiant') {
+            abort(404, 'Utilisateur non trouvé.');
+        }
+
+        $etudiant = $user->load('etudiant');
+
+        return view('enseignant.etudiants.show', compact('etudiant'));
     }
-    
-    // Vérifier que l'utilisateur est bien un étudiant
-    if ($user->role !== 'etudiant') {
-        abort(404, 'Utilisateur non trouvé.');
-    }
-    
-    $etudiant = $user->load('etudiant');
-    
-    return view('enseignant.etudiants.show', compact('etudiant'));
-}
 
     // ────────────────────────────────────────────────────────
     // CRUD Étudiants

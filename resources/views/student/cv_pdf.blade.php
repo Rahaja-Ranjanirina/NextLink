@@ -29,9 +29,9 @@
         
         /* Header Section */
         .cv-header {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
             padding: 48px 40px;
-            color: white;
+            color: var(--text-primary);
         }
         
         .cv-name {

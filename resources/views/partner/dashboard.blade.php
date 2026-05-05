@@ -7,8 +7,6 @@
        Same design as student/teacher dashboard
        ======================================== */
     
-    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
-    
     .partner-container {
         min-height: 100vh;
         position: relative;
@@ -23,7 +21,7 @@
         right: 0;
         bottom: 0;
         z-index: 0;
-        background: linear-gradient(145deg, #070b17 0%, #0f1322 50%, #0a0e1a 100%);
+        background: var(--bg-primary);
     }
     
     .partner-bg::before {
@@ -34,7 +32,7 @@
         right: 0;
         bottom: 0;
         background: url('https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2') center/cover no-repeat;
-        opacity: 0.08;
+        opacity: var(--bg-overlay-image-opacity, 0.08);
         pointer-events: none;
     }
     
@@ -45,7 +43,7 @@
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+        background: radial-gradient(circle at 30% 40%, var(--accent-light) 0%, transparent 50%);
         pointer-events: none;
     }
     
@@ -64,8 +62,8 @@
     }
     
     .partner-badge {
-        background: rgba(99, 102, 241, 0.15);
-        border: 1px solid rgba(99, 102, 241, 0.25);
+        background: var(--badge-bg);
+        border: 1px solid var(--badge-border);
         border-radius: 100px;
         padding: 4px 16px;
         display: inline-block;
@@ -73,7 +71,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         margin-bottom: 16px;
     }
     
@@ -81,7 +79,7 @@
         font-size: 42px;
         font-weight: 800;
         line-height: 1.2;
-        background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 50%, #a5b4fc 100%);
+        background: var(--title-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -89,7 +87,7 @@
     }
     
     .partner-subtitle {
-        color: rgba(156, 163, 175, 0.8);
+        color: var(--text-secondary);
         font-size: 16px;
         font-weight: 400;
     }
@@ -102,20 +100,6 @@
         margin: 24px 0 32px 0;
     }
     
-    .divider-line {
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-    }
-    
-    .divider-dot {
-        width: 5px;
-        height: 5px;
-        background: #6366f1;
-        border-radius: 50%;
-        opacity: 0.5;
-    }
-    
     /* Stats Grid */
     .stats-grid {
         display: grid;
@@ -124,9 +108,9 @@
     }
     
     .stat-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 24px;
         padding: 24px;
         transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
@@ -134,30 +118,15 @@
         overflow: hidden;
     }
     
-    .stat-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-        transition: left 0.6s ease;
-    }
-    
-    .stat-card:hover::before {
-        left: 100%;
-    }
-    
     .stat-card:hover {
         transform: translateY(-4px);
-        border-color: rgba(99, 102, 241, 0.4);
+        border-color: var(--card-border-hover);
     }
     
     .stat-icon {
         width: 48px;
         height: 48px;
-        background: rgba(99, 102, 241, 0.15);
+        background: var(--accent-light);
         border-radius: 16px;
         display: flex;
         align-items: center;
@@ -173,27 +142,22 @@
     .stat-title {
         font-size: 18px;
         font-weight: 600;
-        color: white;
+        color: var(--text-primary);
         margin-bottom: 8px;
     }
     
     .stat-text {
         font-size: 13px;
-        color: #9ca3af;
+        color: var(--text-secondary);
         line-height: 1.5;
         margin-bottom: 20px;
     }
     
-    .stat-text strong {
-        color: white;
-        font-weight: 600;
-    }
-    
     /* Button Styles */
     .btn-offres {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 10px 20px;
         border-radius: 100px;
@@ -212,9 +176,9 @@
     }
     
     .btn-create {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 10px 20px;
         border-radius: 100px;
@@ -233,9 +197,9 @@
     }
     
     .btn-notifications {
-        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+        background: linear-gradient(135deg, var(--info) 0%, #0284c7 100%);
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 10px 20px;
         border-radius: 100px;
@@ -259,86 +223,20 @@
         justify-content: flex-end;
         margin-top: 48px;
         padding-top: 24px;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    
-    .btn-logout {
-        background: rgba(239, 68, 68, 0.1);
-        border: 1px solid rgba(239, 68, 68, 0.2);
-        border-radius: 100px;
-        padding: 10px 24px;
-        color: #f87171;
-        font-size: 13px;
-        font-weight: 500;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-logout:hover {
-        background: rgba(239, 68, 68, 0.2);
-        border-color: rgba(239, 68, 68, 0.4);
-        color: #fca5a5;
-        transform: translateY(-2px);
-    }
-    
-    /* Animations */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .animate-fade-up {
-        animation: fadeInUp 0.5s ease forwards;
-    }
-    
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-        width: 5px;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 10px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        border-radius: 10px;
+        border-top: 1px solid var(--divider);
     }
     
     /* Responsive */
     @media (max-width: 1024px) {
-        .partner-content {
-            padding: 32px 32px;
-        }
-        .stats-grid {
-            gap: 20px;
-        }
+        .partner-content { padding: 32px 32px; }
+        .stats-grid { gap: 20px; }
     }
     
     @media (max-width: 768px) {
-        .partner-content {
-            padding: 24px 20px;
-        }
-        .partner-title {
-            font-size: 28px;
-        }
-        .stats-grid {
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-        .stat-card {
-            padding: 20px;
-        }
+        .partner-content { padding: 24px 20px; }
+        .partner-title { font-size: 28px; }
+        .stats-grid { grid-template-columns: 1fr; gap: 16px; }
+        .stat-card { padding: 20px; }
     }
 </style>
 

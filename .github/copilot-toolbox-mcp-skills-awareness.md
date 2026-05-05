@@ -1,6 +1,6 @@
 # GitHub Copilot Toolbox — MCP & Skills awareness
 
-_Generated: 2026-05-02T03:46:25.012Z_
+_Generated: 2026-05-05T10:55:33.771Z_
 
 ## How to use this report
 
@@ -13,9 +13,9 @@ _Generated: 2026-05-02T03:46:25.012Z_
 
 ## MCP — workspace
 
-Workspace `mcp.json` _(folder: NextLink(claude))_
+Workspace `mcp.json` _(folder: NextLink)_
 
-- **/home/project/Documents/Mini_Project_LARAVEL/NextLink(claude)/.vscode/mcp.json** — _File missing_
+- **/home/project/Documents/Mini_Project_LARAVEL/NextLink/.vscode/mcp.json** — _File missing_
 
 _No active workspace servers in mcp.json._
 
@@ -64,7 +64,7 @@ _None found (or no workspace open)._
   - Execute Azure deployments for ALREADY-PREPARED applications that have existing .azure/deployment-plan.md and infrastructure files. DO NOT use this skill when the user asks to CREATE a new application — use azure-prepare 
 
 - **azure-diagnostics** — `/home/project/.agents/skills/azure-diagnostics`
-  - Debug Azure production issues on Azure using AppLens, Azure Monitor, resource health, and safe triage. WHEN: debug production issues, troubleshoot container apps, troubleshoot functions, troubleshoot AKS, kubectl cannot 
+  - Debug Azure production issues on Azure using AppLens, Azure Monitor, resource health, and safe triage. WHEN: debug production issues, troubleshoot app service, app service high CPU, app service deployment failure, troubl
 
 - **azure-enterprise-infra-planner** — `/home/project/.agents/skills/azure-enterprise-infra-planner`
   - Architect and provision enterprise Azure infrastructure from workload descriptions. For cloud architects and platform engineers planning networking, identity, security, compliance, and multi-resource topologies with WAF 
@@ -112,7 +112,7 @@ _None found (or no workspace open)._
   - Guides Microsoft Entra ID app registration, OAuth 2.0 authentication, and MSAL integration. USE FOR: create app registration, register Azure AD app, configure OAuth, set up authentication, add API permissions, generate s
 
 - **microsoft-foundry** — `/home/project/.agents/skills/microsoft-foundry`
-  - Deploy, evaluate, and manage Foundry agents end-to-end: Docker build, ACR push, hosted/prompt agent create, container start, batch eval, prompt optimization, prompt optimizer workflows, agent.yaml, dataset curation from 
+  - Deploy, evaluate, and manage Foundry agents end-to-end: Docker build, ACR push, hosted/prompt agent create, container start, batch eval, continuous eval, prompt optimizer workflows, agent.yaml, dataset curation from trac
 
 ---
 

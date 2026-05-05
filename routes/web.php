@@ -14,7 +14,6 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\Student\CvController;
 use App\Http\Controllers\Student\ForumController;
 use App\Http\Controllers\Student\PrivateMessageController;
-use App\Http\Controllers\Student\StudentDashboardController;
 
 // ==================== ROUTES PUBLIQUES ====================
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
@@ -146,5 +145,3 @@ Route::middleware('auth:partner')->prefix('partner')->group(function () {
 Route::get('/dashboard', function () {
     return redirect()->route('student.dashboard');
 })->middleware('auth:student')->name('dashboard');
-
-Route::get('/etudiants/{user}/profile', [EnseignantController::class, 'showStudentProfile'])->name('enseignant.etudiants.profile');

@@ -21,7 +21,7 @@
         right: 0;
         bottom: 0;
         z-index: 0;
-        background: linear-gradient(145deg, #070b17 0%, #0f1322 50%, #0a0e1a 100%);
+        background: var(--bg-primary);
     }
     
     .chat-bg::before {
@@ -32,7 +32,7 @@
         right: 0;
         bottom: 0;
         background: url('https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2') center/cover no-repeat;
-        opacity: 0.08;
+        opacity: var(--bg-overlay-image-opacity, 0.08);
         pointer-events: none;
     }
     
@@ -43,7 +43,7 @@
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+        background: radial-gradient(circle at 30% 40%, var(--accent-light) 0%, transparent 50%);
         pointer-events: none;
     }
     
@@ -68,7 +68,7 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         text-decoration: none;
         font-size: 13px;
         margin-bottom: 16px;
@@ -84,9 +84,9 @@
         display: flex;
         align-items: center;
         gap: 16px;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 24px;
         padding: 16px 24px;
     }
@@ -95,24 +95,24 @@
         width: 60px;
         height: 60px;
         border-radius: 20px;
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 24px;
         font-weight: 700;
-        color: white;
+        color: var(--text-primary);
     }
     
     .user-name {
         font-size: 20px;
         font-weight: 700;
-        color: white;
+        color: var(--text-primary);
     }
     
     .user-filiere {
         font-size: 13px;
-        color: #9ca3af;
+        color: var(--text-muted);
         margin-top: 4px;
     }
     
@@ -123,7 +123,7 @@
         margin-bottom: 20px;
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 24px;
     }
     
@@ -132,12 +132,12 @@
     }
     
     .messages-area::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--scrollbar-track);
         border-radius: 10px;
     }
     
     .messages-area::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 10px;
     }
     
@@ -152,12 +152,12 @@
     }
     
     .message-item.my-message .message-bubble {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 20px 20px 6px 20px;
     }
     
     .message-item.my-message .message-text {
-        color: white;
+        color: var(--text-primary);
     }
     
     .message-item.other-message {
@@ -166,12 +166,12 @@
     
     .message-item.other-message .message-bubble {
         background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 20px 20px 20px 6px;
     }
     
     .message-item.other-message .message-text {
-        color: #e8edf2;
+        color: var(--input-text);
     }
     
     .message-bubble {
@@ -190,12 +190,12 @@
     .message-author {
         font-size: 11px;
         font-weight: 600;
-        color: #a5b4fc;
+        color: var(--badge-text);
     }
     
     .message-time {
         font-size: 10px;
-        color: #6b7280;
+        color: var(--text-secondary);
     }
     
     .my-message .message-time {
@@ -221,7 +221,7 @@
         border-radius: 12px;
         overflow: hidden;
         cursor: pointer;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--btn-secondary-border);
         transition: transform 0.2s;
     }
     
@@ -241,23 +241,23 @@
         align-items: center;
         gap: 6px;
         padding: 6px 12px;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--btn-secondary-bg);
         border-radius: 12px;
         font-size: 11px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         text-decoration: none;
         transition: all 0.2s;
     }
     
     .attach-file:hover {
         background: rgba(99, 102, 241, 0.2);
-        color: white;
+        color: var(--text-primary);
     }
     
     .reply-form {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 24px;
         padding: 20px;
         flex-shrink: 0;
@@ -265,11 +265,11 @@
     
     .reply-input {
         width: 100%;
-        background: rgba(10, 12, 16, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--input-bg-focus);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 18px;
         padding: 12px 16px;
-        color: #e8edf2;
+        color: var(--input-text);
         font-size: 13px;
         resize: none;
         font-family: 'Inter', sans-serif;
@@ -277,7 +277,7 @@
     
     .reply-input:focus {
         outline: none;
-        border-color: #6366f1;
+        border-color: var(--accent-primary);
     }
     
     .form-footer {
@@ -293,24 +293,24 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--btn-secondary-bg);
         padding: 8px 16px;
         border-radius: 100px;
         font-size: 12px;
-        color: #9ca3af;
+        color: var(--text-muted);
         cursor: pointer;
         transition: all 0.2s;
     }
     
     .attach-btn:hover {
-        background: rgba(99, 102, 241, 0.15);
-        color: #a5b4fc;
+        background: var(--badge-bg);
+        color: var(--badge-text);
     }
     
     .send-btn {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 8px 24px;
         border-radius: 100px;
@@ -335,11 +335,11 @@
     }
     
     .file-tag {
-        background: rgba(99, 102, 241, 0.15);
+        background: var(--badge-bg);
         padding: 4px 12px;
         border-radius: 100px;
         font-size: 11px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         display: inline-flex;
         align-items: center;
         gap: 6px;
@@ -372,7 +372,7 @@
         justify-content: center;
         height: 100%;
         text-align: center;
-        color: #6b7280;
+        color: var(--text-secondary);
     }
     
     .image-modal {
@@ -408,7 +408,7 @@
         right: 0;
         background: rgba(255, 255, 255, 0.1);
         border: none;
-        color: white;
+        color: var(--text-primary);
         padding: 6px 16px;
         border-radius: 100px;
         cursor: pointer;

@@ -16,29 +16,29 @@ class EtudiantController extends Controller
     // ────────────────────────────────────────────────────────
     public function dashboard()
     {
-        $offres = Offre::where('is_active', '=', true, 'and')
+        $offres = Offre::where('is_active', true)
             ->with(['publisher', 'medias'])
             ->latest()
             ->paginate(10);
 
-        $mesCandidatures = Candidature::where('etudiant_id', '=', Auth::id(), 'and')
+        $mesCandidatures = Candidature::where('etudiant_id', Auth::id())
             ->with('offre.publisher')
             ->latest()
             ->get();
 
-        $activeJitsiMeetings = Notification::where('user_id', '=', Auth::id(), 'and')
-            ->where('type', '=', 'jitsi_meeting', 'and')
-            ->where('is_read', '=', false, 'and')
+        $activeJitsiMeetings = Notification::where('user_id', Auth::id())
+            ->where('type', 'jitsi_meeting')
+            ->where('is_read', false)
             ->with(['notifiable.offre.publisher'])
             ->get();
 
         // Liste communauté (étudiants + enseignants) pour les étudiants du système
-        $etudiants = \App\Models\User::where('role', '=', 'etudiant', 'and')
+        $etudiants = \App\Models\User::where('role', 'etudiant')
             ->with('etudiant')
             ->orderByDesc('id')
             ->get();
 
-        $enseignants = \App\Models\User::where('role', '=', 'enseignant', 'and')
+        $enseignants = \App\Models\User::where('role', 'enseignant')
             ->orderByDesc('id')
             ->get();
 
@@ -47,12 +47,12 @@ class EtudiantController extends Controller
 
     public function offres()
     {
-        $offres = Offre::where('is_active', '=', true, 'and')
+        $offres = Offre::where('is_active', true)
             ->with(['publisher', 'medias'])
             ->latest()
             ->paginate(12);
 
-        $offresPostulees = Candidature::where('etudiant_id', '=', Auth::id(), 'and')
+        $offresPostulees = Candidature::where('etudiant_id', Auth::id())
             ->pluck('offre_id')
             ->toArray();
 
@@ -62,8 +62,8 @@ class EtudiantController extends Controller
     public function showOffre(Offre $offre)
     {
         $offre->load(['publisher', 'medias', 'candidatures']);
-        $dejaPostule = Candidature::where('offre_id', '=', $offre->id, 'and')
-            ->where('etudiant_id', '=', Auth::id(), 'and')
+        $dejaPostule = Candidature::where('offre_id', $offre->id)
+            ->where('etudiant_id', Auth::id())
             ->exists();
 
         return view('student.offres.show', compact('offre', 'dejaPostule'));
@@ -75,7 +75,7 @@ class EtudiantController extends Controller
     public function postuler(Request $request, Offre $offre)
     {
         // Vérifier qu'il n'a pas déjà postulé
-        if (Candidature::where('offre_id', '=', $offre->id, 'and')->where('etudiant_id', '=', Auth::id(), 'and')->exists()) {
+        if (Candidature::where('offre_id', $offre->id)->where('etudiant_id', Auth::id())->exists()) {
             return back()->with('error', 'Vous avez déjà postulé à cette offre.');
         }
 
@@ -221,7 +221,7 @@ class EtudiantController extends Controller
     // ────────────────────────────────────────────────────────
     public function mesCandidatures()
     {
-        $candidatures = Candidature::where('etudiant_id', '=', Auth::id(), 'and')
+        $candidatures = Candidature::where('etudiant_id', Auth::id())
             ->with('offre.publisher')
             ->latest()
             ->paginate(10);
@@ -231,7 +231,7 @@ class EtudiantController extends Controller
 
     public function notifications()
     {
-        $notifications = Notification::where('user_id', '=', Auth::id(), 'and')
+        $notifications = Notification::where('user_id', Auth::id())
             ->latest()
             ->paginate(15);
 

@@ -47,7 +47,7 @@
         padding: 15px 18px;
         border-radius: 12px;
         border: 1px solid rgba(255,255,255,0.15);
-        background: rgba(255,255,255,0.08);
+        background: var(--btn-secondary-hover-bg);
         color: #fff;
         font-size: 15px;
         outline: none;

@@ -23,7 +23,7 @@
         right: 0;
         bottom: 0;
         z-index: 0;
-        background: linear-gradient(145deg, #070b17 0%, #0f1322 50%, #0a0e1a 100%);
+        background: var(--bg-primary);
     }
     
     .offer-detail-bg::before {
@@ -34,7 +34,7 @@
         right: 0;
         bottom: 0;
         background: url('https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2') center/cover no-repeat;
-        opacity: 0.08;
+        opacity: var(--bg-overlay-image-opacity, 0.08);
         pointer-events: none;
     }
     
@@ -45,7 +45,7 @@
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+        background: radial-gradient(circle at 30% 40%, var(--accent-light) 0%, transparent 50%);
         pointer-events: none;
     }
     
@@ -63,7 +63,7 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        color: #a5b4fc;
+        color: var(--badge-text);
         text-decoration: none;
         font-size: 13px;
         margin-bottom: 24px;
@@ -82,16 +82,16 @@
     
     /* Glass Card */
     .glass-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--glass-border);
         border-radius: 28px;
         padding: 32px;
         transition: all 0.3s ease;
     }
     
     .glass-card:hover {
-        border-color: rgba(99, 102, 241, 0.3);
+        border-color: var(--card-border-hover);
     }
     
     /* Badges */
@@ -115,11 +115,11 @@
     
     /* Buttons */
     .btn-secondary {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--btn-secondary-bg);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 100px;
         padding: 8px 18px;
-        color: #d1d5db;
+        color: var(--btn-secondary-color);
         font-size: 12px;
         font-weight: 500;
         text-decoration: none;
@@ -136,14 +136,14 @@
     
     .btn-secondary:hover {
         background: rgba(255, 255, 255, 0.1);
-        color: white;
+        color: var(--text-primary);
         transform: translateY(-2px);
     }
     
     .btn-primary {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
         border: none;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         padding: 10px 24px;
         border-radius: 100px;
@@ -171,7 +171,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 12px;
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--scrollbar-track);
         border-radius: 20px;
         padding: 14px 18px;
         margin-bottom: 32px;
@@ -181,7 +181,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        color: #d1d5db;
+        color: var(--btn-secondary-color);
     }
     
     .info-icon {
@@ -198,7 +198,7 @@
     .info-icon svg {
         width: 16px;
         height: 16px;
-        color: #a5b4fc;
+        color: var(--badge-text);
     }
     
     .info-label {
@@ -206,20 +206,20 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        color: #9ca3af;
+        color: var(--text-muted);
     }
     
     .info-value {
         font-size: 13px;
         font-weight: 500;
-        color: white;
+        color: var(--text-primary);
     }
     
     /* Section Title */
     .section-title {
         font-size: 17px;
         font-weight: 700;
-        color: white;
+        color: var(--text-primary);
         margin-bottom: 14px;
         display: flex;
         align-items: center;
@@ -229,22 +229,23 @@
     .section-title svg {
         width: 18px;
         height: 18px;
-        color: #a5b4fc;
+        color: var(--badge-text);
     }
     
     /* Media Grid */
     .media-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 16px;
+        grid-template-columns: 1fr;
+        gap: 24px;
         margin-top: 14px;
     }
     
     .media-image {
         border-radius: 18px;
         width: 100%;
-        height: 180px;
-        object-fit: cover;
+        max-height: 800px;
+        object-fit: contain;
+        background: rgba(0, 0, 0, 0.2);
         transition: transform 0.3s ease;
     }
     
@@ -281,17 +282,17 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        color: #9ca3af;
+        color: var(--text-muted);
         margin-bottom: 6px;
     }
     
     .form-textarea {
         width: 100%;
-        background: rgba(10, 12, 16, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--input-bg-focus);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 16px;
         padding: 12px 16px;
-        color: #e8edf2;
+        color: var(--input-text);
         font-size: 13px;
         resize: vertical;
         transition: all 0.2s ease;
@@ -299,25 +300,25 @@
     
     .form-textarea:focus {
         outline: none;
-        border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px var(--accent-light);
     }
     
     .form-input {
         width: 100%;
-        background: rgba(10, 12, 16, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--input-bg-focus);
+        border: 1px solid var(--btn-secondary-border);
         border-radius: 16px;
         padding: 10px 14px;
-        color: #e8edf2;
+        color: var(--input-text);
         font-size: 13px;
         transition: all 0.2s ease;
     }
     
     .form-input:focus {
         outline: none;
-        border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px var(--accent-light);
     }
     
     /* Animations */
@@ -358,12 +359,12 @@
     }
     
     ::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--scrollbar-track);
         border-radius: 10px;
     }
     
     ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         border-radius: 10px;
     }
 </style>
@@ -515,9 +516,19 @@
                     <form action="{{ route('student.offres.postuler', $offre) }}" method="POST" enctype="multipart/form-data" class="space-y-5">
                         @csrf
                         
+                        @if($errors->any())
+                            <div class="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl mb-6 text-sm">
+                                <ul class="list-disc list-inside">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        
                         <div>
                             <label class="form-label">Message de motivation (optionnel)</label>
-                            <textarea name="message" rows="4" class="form-textarea" placeholder="Dites-nous pourquoi vous êtes intéressé par cette opportunité..."></textarea>
+                            <textarea name="message" rows="4" class="form-textarea" placeholder="Dites-nous pourquoi vous êtes intéressé par cette opportunité...">{{ old('message') }}</textarea>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
