@@ -17,11 +17,12 @@
 
     /* ========== CONTAINER ========== */
     .dashboard-container {
-        height: 100vh;
+        min-height: 100vh;
         width: 100vw;
         position: relative;
         font-family: 'Inter', sans-serif;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     /* ========== BACKGROUND ========== */
@@ -54,12 +55,11 @@
     .dashboard-content {
         position: relative;
         z-index: 1;
-        height: 100vh;
+        min-height: 100vh;
         width: 100%;
-        padding: clamp(12px, 1.5vh, 24px) clamp(16px, 2.5vw, 48px);
+        padding: clamp(12px, 2vh, 24px) clamp(12px, 4vw, 48px);
         display: flex;
         flex-direction: column;
-        overflow: hidden;
     }
 
     /* ========== WELCOME SECTION ========== */
@@ -157,10 +157,10 @@
     /* ========== STATS ========== */
     .stats-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, clamp(180px, 18vw, 300px)));
-        gap: clamp(10px, 1vw, 16px);
+        grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 25vw, 300px), 1fr));
+        gap: clamp(10px, 1.2vw, 16px);
         flex-shrink: 0;
-        margin-bottom: clamp(12px, 1.5vh, 20px);
+        margin-bottom: clamp(12px, 2vh, 20px);
     }
 
     .stat-card {
@@ -625,35 +625,35 @@
        ============================================ */
 
     @media (max-width: 768px) {
-        html { font-size: 13px; }
-        html, body { overflow: auto; }
-        .dashboard-container { height: auto; min-height: 100vh; overflow: auto; }
-        .dashboard-content { height: auto; overflow: visible; padding: 12px 14px; }
+        html { font-size: 14px; }
+        html, body { overflow: auto; height: auto; }
+        .dashboard-container { height: auto; min-height: 100vh; overflow: visible; }
+        .dashboard-content { height: auto; overflow: visible; padding: 15px 12px; }
 
         .main-layout {
             grid-template-columns: 1fr;
             overflow: visible;
             height: auto;
-            gap: 10px;
+            gap: 15px;
         }
 
         .sidebar-nav {
             height: auto;
-            max-height: 150px;
-            overflow-y: auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            padding: 8px;
+            max-height: none;
+            overflow: visible;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            padding: 12px;
             border-radius: 14px;
         }
 
-        .nav-section-title { width: 100%; margin-top: 4px; margin-bottom: 2px; }
-        .nav-link { flex: 0 0 auto; padding: 5px 9px; border-radius: 8px; }
-        .main-content { height: auto; min-height: 280px; overflow: visible; }
-        .stats-grid { grid-template-columns: repeat(3, 1fr) !important; }
-        .users-grid { grid-template-columns: 1fr; }
-        .stat-trend { display: none; }
+        .nav-section-title { grid-column: 1 / -1; width: 100%; margin-top: 8px; margin-bottom: 4px; }
+        .nav-link { margin-bottom: 0; padding: 8px 10px; }
+        .main-content { height: auto; min-height: 300px; overflow: visible; padding: 15px; }
+        .stats-grid { grid-template-columns: 1fr !important; }
+        .user-avatar-large { width: 45px; height: 45px; }
+        .greeting-title { font-size: 18px; }
     }
 
     @media (max-width: 480px) {

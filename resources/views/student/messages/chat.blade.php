@@ -52,7 +52,7 @@
         z-index: 1;
         max-width: 1000px;
         margin: 0 auto;
-        padding: 32px 40px;
+        padding: clamp(12px, 2vh, 32px) clamp(10px, 3vw, 40px);
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -432,18 +432,43 @@
     
     @media (max-width: 768px) {
         .chat-content {
-            padding: 16px 20px;
+            padding: 10px;
+            height: 100dvh; /* dynamic viewport height pour mobile */
         }
         .message-bubble {
-            max-width: 85%;
+            max-width: 90%;
+            padding: 10px 14px;
+        }
+        .user-info {
+            padding: 10px 16px;
+            border-radius: 16px;
+            gap: 12px;
         }
         .user-avatar {
-            width: 48px;
-            height: 48px;
-            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            border-radius: 12px;
         }
         .user-name {
-            font-size: 16px;
+            font-size: 15px;
+        }
+        .user-filiere {
+            font-size: 11px;
+        }
+        .back-link {
+            margin-bottom: 10px;
+        }
+        .reply-form {
+            padding: 12px;
+            border-radius: 18px;
+        }
+        .send-btn {
+            padding: 8px 16px;
+        }
+        .messages-area {
+            padding: 12px;
+            margin-bottom: 10px;
         }
     }
 </style>

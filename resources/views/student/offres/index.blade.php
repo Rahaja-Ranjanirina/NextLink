@@ -55,7 +55,7 @@
         z-index: 1;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 40px 48px;
+        padding: clamp(20px, 4vh, 40px) clamp(12px, 4vw, 48px);
     }
     
     /* Header */
@@ -78,7 +78,7 @@
     }
     
     .page-title {
-        font-size: 42px;
+        font-size: clamp(24px, 4vw, 42px);
         font-weight: 800;
         line-height: 1.2;
         background: var(--title-gradient);
@@ -375,20 +375,29 @@
     /* Responsive */
     @media (max-width: 768px) {
         .offers-content {
-            padding: 24px 20px;
+            padding: 20px 15px;
         }
         .page-title {
-            font-size: 28px;
+            font-size: 24px;
+        }
+        .page-subtitle {
+            font-size: 14px;
         }
         .offer-card {
-            padding: 18px;
+            padding: 16px;
+            border-radius: 18px;
         }
         .offer-title {
-            font-size: 18px;
+            font-size: 17px;
         }
         .offer-footer {
             flex-direction: column;
-            align-items: flex-start;
+            align-items: stretch;
+            gap: 12px;
+        }
+        .btn-primary {
+            width: 100%;
+            justify-content: center;
         }
         .badge-success {
             align-self: flex-start;
