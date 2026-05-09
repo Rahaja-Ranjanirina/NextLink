@@ -12,11 +12,12 @@
 
 
 
+
 <!-- github-copilot-toolbox:mcp-skills-awareness-begin -->
 
 ### MCP & Skills awareness (GitHub Copilot Toolbox)
 
-_Last synced: 2026-05-07T13:23:04.256Z._
+_Last synced: 2026-05-09T23:13:59.176Z._
 
 - **Full report:** `.github/copilot-toolbox-mcp-skills-awareness.md` in this workspace (auto-overwritten on each scan). Use it as ground truth for configured servers and skill folders.
 - **MCP:** For **live tools**, use **Copilot Chat → Agent** and **trust/start** the right servers in the MCP UI.
@@ -51,11 +52,11 @@ _None found (or no workspace open)._
 
 - **azure-aigateway** — `/home/project/.agents/skills/azure-aigateway` — Configure Azure API Management as an AI Gateway for AI models, MCP tools, and agents. WHEN: semantic caching, token limit, content safety, load balancing, AI model governance, MCP rate limiting, jailbreak detection, add 
 
-- **azure-cloud-migrate** — `/home/project/.agents/skills/azure-cloud-migrate` — Assess and migrate cross-cloud workloads to Azure with migration reports and code conversion. Supports Lambda→Functions, Fargate→Container Apps, Kubernetes→Container Apps, Cloud Run→Container Apps. WHEN: migrate Lambda t
+- **azure-cloud-migrate** — `/home/project/.agents/skills/azure-cloud-migrate` — Assess and migrate cross-cloud workloads to Azure with reports and code conversion. Supports Lambda→Functions, Beanstalk/Heroku/App Engine→App Service, Fargate/Kubernetes/Cloud Run→Container Apps. WHEN: migrate Lambda to
 
 - **azure-compliance** — `/home/project/.agents/skills/azure-compliance` — Run Azure compliance and security audits with azqr plus Key Vault expiration checks. Covers best-practice assessment, resource review, policy/compliance validation, and security posture checks. WHEN: compliance scan, sec
 
-- **azure-compute** — `/home/project/.agents/skills/azure-compute` — Azure VM and VMSS router for recommendations, pricing, autoscale, orchestration, connectivity troubleshooting, and capacity reservations. WHEN: Azure VM, VMSS, scale set, recommend, compare, server, website, burstable, l
+- **azure-compute** — `/home/project/.agents/skills/azure-compute` — Azure VM and VMSS router for recommendations, pricing, autoscale, orchestration, connectivity troubleshooting, capacity reservations, and Essential Machine Management. WHEN: Azure VM, VMSS, scale set, recommend, compare,
 
 - **azure-cost** — `/home/project/.agents/skills/azure-cost` — Unified Azure cost management: query historical costs, forecast future spending, and optimize to reduce waste. WHEN: \"Azure costs\", \"Azure spending\", \"Azure bill\", \"cost breakdown\", \"cost by service\", \"cost by
 
@@ -85,7 +86,7 @@ _None found (or no workspace open)._
 
 - **azure-storage** — `/home/project/.agents/skills/azure-storage` — Azure Storage Services including Blob Storage, File Shares, Queue Storage, Table Storage, and Data Lake. Answers questions about storage access tiers (hot, cool, cold, archive), when to use each tier, and tier comparison
 
-- **azure-upgrade** — `/home/project/.agents/skills/azure-upgrade` — Assess and upgrade Azure workloads between plans, tiers, or SKUs, or modernize Azure SDK dependencies in source code. WHEN: upgrade Consumption to Flex Consumption, upgrade Azure Functions plan, migrate hosting plan, cha
+- **azure-upgrade** — `/home/project/.agents/skills/azure-upgrade` — Assess and upgrade Azure workloads between plans, tiers, or SKUs, or modernize Azure SDK dependencies in source code. WHEN: upgrade Consumption to Flex Consumption, upgrade Azure Functions plan, change hosting plan, func
 
 - **azure-validate** — `/home/project/.agents/skills/azure-validate` — Pre-deployment validation for Azure readiness. Run deep checks on configuration, infrastructure (Bicep or Terraform), RBAC role assignments, managed identity permissions, and prerequisites before deploying. WHEN: validat
 
