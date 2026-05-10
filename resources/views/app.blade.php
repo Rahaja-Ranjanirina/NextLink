@@ -2,7 +2,7 @@
 <html lang="fr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>NextLink - Plateforme étudiante</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
@@ -433,6 +433,311 @@
     <main>
         @yield('content')
     </main>
+
+    <style id="nextlink-responsive-guard">
+        /* Responsive safety layer loaded after page-level styles. */
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: clip;
+        }
+
+        body {
+            min-width: 320px;
+        }
+
+        img,
+        video,
+        canvas,
+        iframe,
+        svg {
+            max-width: 100%;
+        }
+
+        table {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        input,
+        textarea,
+        select,
+        button {
+            font: inherit;
+            max-width: 100%;
+        }
+
+        .container-custom,
+        .welcome-content,
+        .dashboard-content,
+        .admin-main,
+        .page-content,
+        .forum-content,
+        .forum-show-content,
+        .forum-create-content,
+        .chat-content,
+        .profile-content,
+        .messages-content {
+            max-width: min(100%, 1440px);
+        }
+
+        .table-wrapper,
+        .table-container,
+        .data-table-wrapper,
+        .students-table-wrapper {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .data-table,
+        .students-table {
+            min-width: 680px;
+        }
+
+        .glass-card,
+        .premium-card,
+        .support-card,
+        .stat-card,
+        .user-card,
+        .offre-card,
+        .login-card,
+        .modal-content,
+        .main-content,
+        .sidebar-nav {
+            min-width: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid,
+            .main-layout,
+            .stats-grid,
+            .users-grid,
+            .offres-grid,
+            .forum-grid,
+            .form-grid,
+            .details-grid,
+            .meta-grid,
+            .info-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .admin-sidebar {
+                width: 220px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            html,
+            body {
+                height: auto !important;
+                min-height: 100%;
+                overflow-x: clip !important;
+                overflow-y: auto !important;
+            }
+
+            body {
+                font-size: 14px;
+            }
+
+            main {
+                width: 100%;
+                overflow-x: clip;
+            }
+
+            .dashboard-container,
+            .admin-container,
+            .welcome-container,
+            .page-container,
+            .forum-container,
+            .forum-show-container,
+            .chat-container {
+                width: 100% !important;
+                min-height: 100svh !important;
+                height: auto !important;
+                overflow-x: clip !important;
+                overflow-y: visible !important;
+            }
+
+            .dashboard-content,
+            .admin-main,
+            .welcome-container,
+            .page-content,
+            .forum-content,
+            .forum-show-content,
+            .forum-create-content,
+            .chat-content,
+            .profile-content,
+            .messages-content {
+                width: 100% !important;
+                height: auto !important;
+                min-height: auto !important;
+                padding: 20px 14px !important;
+                overflow: visible !important;
+            }
+
+            .main-content,
+            .sidebar-nav {
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            .admin-container {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            .admin-sidebar {
+                width: 100% !important;
+                height: auto !important;
+                max-height: 42svh;
+                border-right: 0 !important;
+                border-bottom: 1px solid var(--divider);
+            }
+
+            .sidebar-header,
+            .sidebar-footer {
+                padding: 14px !important;
+                margin-bottom: 0 !important;
+            }
+
+            .sidebar-nav {
+                padding: 12px !important;
+            }
+
+            .nav-item,
+            .nav-link,
+            .logout-sidebar {
+                min-height: 42px;
+                white-space: normal !important;
+                overflow-wrap: anywhere;
+            }
+
+            .section-header,
+            .forum-header,
+            .chat-header,
+            .modal-buttons,
+            .forum-actions {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 12px !important;
+            }
+
+            .welcome-container {
+                align-items: stretch !important;
+                justify-content: flex-start !important;
+            }
+
+            .premium-card,
+            .support-card,
+            .glass-card,
+            .main-content,
+            .login-card,
+            .modal-content {
+                border-radius: 18px !important;
+                padding: 22px !important;
+            }
+
+            h1,
+            .forum-title,
+            .main-title,
+            .greeting-title,
+            .partner-title,
+            .login-title,
+            .premium-card h2 {
+                font-size: clamp(1.6rem, 8vw, 2.15rem) !important;
+                line-height: 1.15 !important;
+                overflow-wrap: anywhere;
+            }
+
+            h2,
+            .section-title,
+            .modal-title {
+                font-size: clamp(1.15rem, 5.5vw, 1.5rem) !important;
+                line-height: 1.25 !important;
+            }
+
+            p,
+            .premium-card p,
+            .forum-description,
+            .greeting-subtitle,
+            .partner-subtitle,
+            .login-subtitle {
+                max-width: 100% !important;
+            }
+
+            .btn-primary,
+            .btn-secondary,
+            .btn-noble,
+            .btn-back,
+            .btn-save,
+            .btn-cancel,
+            .btn-outline,
+            .btn-primary-gradient,
+            .logout-btn {
+                width: 100%;
+                justify-content: center;
+                white-space: normal;
+                text-align: center;
+            }
+
+            .theme-toggle {
+                bottom: 14px !important;
+                right: 14px !important;
+            }
+
+            #toast-container {
+                left: 12px !important;
+                right: 12px !important;
+                bottom: 12px !important;
+            }
+
+            #toast-container > div {
+                min-width: 0 !important;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard-content,
+            .admin-main,
+            .welcome-container,
+            .page-content,
+            .forum-content,
+            .forum-show-content,
+            .forum-create-content,
+            .chat-content,
+            .profile-content,
+            .messages-content {
+                padding: 14px 10px !important;
+            }
+
+            .premium-card,
+            .support-card,
+            .glass-card,
+            .main-content,
+            .login-card,
+            .modal-content {
+                padding: 18px !important;
+            }
+
+            .sidebar-nav {
+                grid-template-columns: 1fr !important;
+            }
+
+            .user-card,
+            .stat-card {
+                align-items: flex-start;
+            }
+        }
+    </style>
 
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">

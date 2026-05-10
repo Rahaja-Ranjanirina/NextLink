@@ -12,7 +12,7 @@ class CvController extends Controller
 {
     public function dashboard()
     {
-        $student = auth()->guard('student')->user();
+        $student = Auth::user();
         $cv = $student->cv ?? null;
 
         return view('student.dashboard', compact('student', 'cv'));
@@ -43,7 +43,7 @@ class CvController extends Controller
 
     public function download()
 {
-    $student = auth()->guard('student')->user();
+    $student = Auth::user();
 
     $cv = \App\Models\Cv::where('student_id', $student->id)->first();
 

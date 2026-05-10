@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use App\Models\Student;
 use App\Models\User;
 use App\Mail\ResetPasswordMail;
+use App\Http\Middleware\EnsureSingleSessionGuard;
 
 class MainAuthController extends Controller
 {
@@ -19,37 +19,40 @@ class MainAuthController extends Controller
         return view('auth.login');  // ta page login
     }
 
+    private function finishLogin(Request $request, string $route)
+    {
+        $request->session()->regenerate();
+        $request->session()->put('auth_guard', 'web');
+        $request->session()->put('auth_user_id', Auth::id());
+        EnsureSingleSessionGuard::rememberCurrentDevice($request);
+
+        return redirect()->route($route);
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('admin')->attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('admin.dashboard');
-        }
-
-        if (Auth::guard('student')->attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('student.dashboard');
-        }
-
-        if (Auth::guard('partner')->attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('partner.dashboard');
-        }
-
-        if (Auth::guard('web')->attempt($credentials)) {
-            $request->session()->regenerate();
-            $user = Auth::guard('web')->user();
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
 
             if ($user->role === 'superadmin') {
-                return redirect()->route('superadmin.dashboard');
+                return $this->finishLogin($request, 'superadmin.dashboard');
             }
 
             if ($user->role === 'enseignant') {
-                return redirect()->route('enseignant.dashboard');
+                return $this->finishLogin($request, 'enseignant.dashboard');
             }
 
+            if ($user->role === 'etudiant') {
+                return $this->finishLogin($request, 'student.dashboard');
+            }
+
+            if ($user->role === 'entreprise') {
+                return $this->finishLogin($request, 'partner.dashboard');
+            }
+
+            Auth::logout();
             return redirect()->route('login');
         }
 

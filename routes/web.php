@@ -26,7 +26,7 @@ Route::post('/password/forgot', [MainAuthController::class, 'sendPasswordReset']
 Route::post('/logout', [MainAuthController::class, 'logout'])->name('logout');
 
 // ==================== ROUTES ÉTUDIANT ====================
-Route::middleware('auth:student')->prefix('student')->group(function () {
+Route::middleware(['auth', 'role:etudiant'])->prefix('student')->group(function () {
     Route::get('/dashboard', [EtudiantController::class, 'dashboard'])->name('student.dashboard');
     Route::get('/offres', [EtudiantController::class, 'offres'])->name('student.offres');
     Route::get('/offres/{offre}', [EtudiantController::class, 'showOffre'])->name('student.offres.show');
@@ -54,7 +54,7 @@ Route::middleware('auth:student')->prefix('student')->group(function () {
 });
 
 // ==================== ROUTES ENSEIGNANT ====================
-Route::middleware('auth')->prefix('enseignant')->group(function () {
+Route::middleware(['auth', 'role:enseignant'])->prefix('enseignant')->group(function () {
     Route::get('/dashboard', [EnseignantController::class, 'dashboard'])->name('enseignant.dashboard');
 
     Route::get('/etudiants', [EnseignantController::class, 'etudiants'])->name('enseignant.etudiants');
@@ -85,7 +85,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 });
 
-Route::middleware('auth:admin')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'role:superadmin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/student/store', [AdminDashboardController::class, 'storeStudent'])->name('admin.student.store');
     Route::get('/students/{student}/edit', [AdminDashboardController::class, 'editStudent'])->name('admin.students.edit');
@@ -102,7 +102,7 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
 });
 
 // ==================== ROUTES SUPERADMIN ====================
-Route::middleware('auth')->prefix('superadmin')->group(function () {
+Route::middleware(['auth', 'role:superadmin'])->prefix('superadmin')->group(function () {
     Route::get('/dashboard', [SuperAdminController::class, 'dashboard'])->name('superadmin.dashboard');
     Route::get('/enseignants', [SuperAdminController::class, 'enseignants'])->name('superadmin.enseignants');
     Route::get('/enseignants/create', [SuperAdminController::class, 'createEnseignant'])->name('superadmin.enseignants.create');
@@ -125,7 +125,7 @@ Route::prefix('partner')->group(function () {
     Route::post('/login', [PartnerAuthController::class, 'login'])->name('partner.login.submit');
 });
 
-Route::middleware('auth:partner')->prefix('partner')->group(function () {
+Route::middleware(['auth', 'role:entreprise'])->prefix('partner')->group(function () {
     Route::get('/dashboard', [PartnerController::class, 'dashboard'])->name('partner.dashboard');
     Route::get('/offres', [PartnerController::class, 'offres'])->name('partner.offres');
     Route::get('/offres/create', [PartnerController::class, 'createOffre'])->name('partner.offres.create');
@@ -144,4 +144,4 @@ Route::middleware('auth:partner')->prefix('partner')->group(function () {
 // ==================== REDIRECTION ====================
 Route::get('/dashboard', function () {
     return redirect()->route('student.dashboard');
-})->middleware('auth:student')->name('dashboard');
+})->middleware(['auth', 'role:etudiant'])->name('dashboard');

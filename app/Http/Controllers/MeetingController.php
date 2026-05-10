@@ -14,7 +14,7 @@ class MeetingController extends Controller
     {
         $this->authorizePartnerCandidature($offre, $candidature);
 
-        $partner = Auth::guard('partner')->user();
+        $partner = Auth::user();
         $partnerName = $partner ? trim($partner->prenom . ' ' . $partner->name) : 'Recruteur';
 
         return view('meet.jitsi', [
@@ -29,7 +29,7 @@ class MeetingController extends Controller
     {
         $this->authorizePartnerCandidature($offre, $candidature);
 
-        $partner = Auth::guard('partner')->user();
+        $partner = Auth::user();
 
         Notification::createForUser(
             $candidature->etudiant_id,
@@ -63,7 +63,7 @@ class MeetingController extends Controller
     private function authorizePartnerCandidature(Offre $offre, Candidature $candidature): void
     {
         abort_unless($candidature->offre_id === $offre->id, 404);
-        abort_unless($offre->user_id === Auth::guard('partner')->id(), 403);
+        abort_unless($offre->user_id === Auth::id(), 403);
     }
 
     private function meetingRoomName(Candidature $candidature): string

@@ -143,6 +143,7 @@
     
     .message-item {
         display: flex;
+        width: 100%;
         margin-bottom: 20px;
         animation: fadeInUp 0.25s ease forwards;
     }
@@ -175,8 +176,10 @@
     }
     
     .message-bubble {
-        max-width: 70%;
+        max-width: min(70%, 720px);
         padding: 12px 18px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
     
     .message-header {

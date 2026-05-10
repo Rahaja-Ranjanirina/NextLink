@@ -24,25 +24,38 @@
         border-radius: 10px;
     }
     
+    .message-row {
+        display: flex;
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .message-row.message-row-my {
+        justify-content: flex-end;
+    }
+
+    .message-row.message-row-other {
+        justify-content: flex-start;
+    }
+
     .message-bubble {
-        max-width: 70%;
+        max-width: min(70%, 720px);
         padding: 12px 16px;
         border-radius: 18px;
-        margin-bottom: 12px;
         word-wrap: break-word;
+        overflow-wrap: anywhere;
     }
     
     .message-my {
         background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         color: var(--text-primary);
-        margin-left: auto;
         border-bottom-right-radius: 4px;
+        box-shadow: 0 8px 18px rgba(99, 102, 241, 0.22);
     }
     
     .message-other {
         background: var(--btn-secondary-hover-bg);
         color: var(--input-text);
-        margin-right: auto;
         border-bottom-left-radius: 4px;
         border: 1px solid var(--btn-secondary-border);
     }
@@ -177,6 +190,19 @@
     .hidden {
         display: none;
     }
+
+    @media (max-width: 768px) {
+        .messages-container {
+            height: auto;
+            min-height: 420px;
+            max-height: 62svh;
+            padding: 14px;
+        }
+
+        .message-bubble {
+            max-width: 88%;
+        }
+    }
 </style>
 
 <div class="container-custom py-8">
@@ -185,18 +211,18 @@
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <div class="flex items-center gap-4">
             <div class="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-xl font-bold text-white shadow-lg">
-                {{ strtoupper(substr($student->prenom ?? $student->name, 0, 1)) }}{{ strtoupper(substr($student->name ?? '', 0, 1)) }}
+                {{ strtoupper(substr($user->prenom ?? $user->name, 0, 1)) }}{{ strtoupper(substr($user->name ?? '', 0, 1)) }}
             </div>
             <div>
-                <h1 class="text-2xl font-bold text-white">{{ $student->prenom }} {{ $student->name }}</h1>
-                <p class="text-sm text-gray-400">{{ $student->email }}</p>
+                <h1 class="text-2xl font-bold text-white">{{ $user->prenom }} {{ $user->name }}</h1>
+                <p class="text-sm text-gray-400">{{ $user->email }}</p>
             </div>
         </div>
         <div class="flex gap-3">
-            <a href="{{ route('student.messages.index') }}" class="btn-secondary text-sm py-2 px-4">
-                ← Tous les messages
+            <a href="{{ route('enseignant.etudiants.profile', $user) }}" class="btn-secondary text-sm py-2 px-4">
+                ← Profil étudiant
             </a>
-            <a href="{{ route('student.dashboard') }}" class="btn-secondary text-sm py-2 px-4">
+            <a href="{{ route('enseignant.dashboard') }}" class="btn-secondary text-sm py-2 px-4">
                 Tableau de bord
             </a>
         </div>
@@ -228,37 +254,39 @@
             @php
                 $isMyMessage = ($message->sender_id === auth()->id());
             @endphp
-            <div class="message-bubble {{ $isMyMessage ? 'message-my' : 'message-other' }}">
-                <div class="text-sm">{{ $message->body }}</div>
-                
-                @if(!empty($message->attachments))
-                    <div class="attach-preview">
-                        @foreach($message->attachments as $attachment)
-                            @if($attachment['type'] === 'image')
-                                <div class="attach-image" onclick="openImageModal('{{ asset('storage/' . $attachment['path']) }}')">
-                                    <img src="{{ asset('storage/' . $attachment['path']) }}" alt="{{ $attachment['name'] }}">
-                                </div>
-                            @elseif($attachment['type'] === 'video')
-                                <a href="{{ asset('storage/' . $attachment['path']) }}" target="_blank" class="attach-file">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                    </svg>
-                                    {{ $attachment['name'] }}
-                                </a>
-                            @else
-                                <a href="{{ asset('storage/' . $attachment['path']) }}" target="_blank" class="attach-file">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                    </svg>
-                                    {{ $attachment['name'] }}
-                                </a>
-                            @endif
-                        @endforeach
+            <div class="message-row {{ $isMyMessage ? 'message-row-my' : 'message-row-other' }}">
+                <div class="message-bubble {{ $isMyMessage ? 'message-my' : 'message-other' }}">
+                    <div class="text-sm">{{ $message->body }}</div>
+
+                    @if(!empty($message->attachments))
+                        <div class="attach-preview">
+                            @foreach($message->attachments as $attachment)
+                                @if($attachment['type'] === 'image')
+                                    <div class="attach-image" onclick="openImageModal('{{ asset('storage/' . $attachment['path']) }}')">
+                                        <img src="{{ asset('storage/' . $attachment['path']) }}" alt="{{ $attachment['name'] }}">
+                                    </div>
+                                @elseif($attachment['type'] === 'video')
+                                    <a href="{{ asset('storage/' . $attachment['path']) }}" target="_blank" class="attach-file">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                        </svg>
+                                        {{ $attachment['name'] }}
+                                    </a>
+                                @else
+                                    <a href="{{ asset('storage/' . $attachment['path']) }}" target="_blank" class="attach-file">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                        </svg>
+                                        {{ $attachment['name'] }}
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                    @endif
+
+                    <div class="message-time">
+                        {{ $message->created_at->format('H:i, d/m/Y') }}
                     </div>
-                @endif
-                
-                <div class="message-time">
-                    {{ $message->created_at->format('H:i, d/m/Y') }}
                 </div>
             </div>
         @empty
@@ -279,9 +307,9 @@
             Nouveau message
         </h3>
         
-        {{-- CORRECTION : URL directe --}}
-        <form action="/student/messages/{{ $student->id }}" method="POST" enctype="multipart/form-data" id="messageForm">
+        <form action="{{ route('enseignant.messages.store') }}" method="POST" enctype="multipart/form-data" id="messageForm">
             @csrf
+            <input type="hidden" name="receiver_id" value="{{ $user->id }}">
             <textarea name="body" rows="3" class="form-textarea" placeholder="Écrivez votre message...">{{ old('body') }}</textarea>
             
             <div class="flex items-center justify-between flex-wrap gap-3 mt-4">

@@ -10,7 +10,7 @@ class DashboardController extends Controller
     public function index()
     {
         // récupérer l'étudiant connecté
-        $student = Auth::guard('student')->user();
+        $student = Auth::user();
 
         // récupérer son CV
         $cv = Cv::where('student_id', $student->id)->first();

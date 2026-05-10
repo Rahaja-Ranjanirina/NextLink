@@ -14,7 +14,7 @@ class PartnerController extends Controller
 {
     public function dashboard()
     {
-        $partner = Auth::guard('partner')->user();
+        $partner = Auth::user();
 
         $offersCount = $partner->offres()->count();
         $unreadNotifications = $partner->notifications()->where('is_read', false)->count();
@@ -29,7 +29,7 @@ class PartnerController extends Controller
 
     public function offres()
     {
-        $partner = Auth::guard('partner')->user();
+        $partner = Auth::user();
         $offres = $partner->offres()
             ->withCount('candidatures')
             ->with('medias')
@@ -58,7 +58,7 @@ class PartnerController extends Controller
 
         $offre = Offre::create([
             ...$validated,
-            'user_id'        => Auth::guard('partner')->id(),
+            'user_id'        => Auth::id(),
             'publisher_type' => 'entreprise',
             'is_active'      => true,
         ]);
@@ -79,7 +79,7 @@ class PartnerController extends Controller
             ->latest()
             ->paginate(10);
 
-        Notification::where('user_id', Auth::guard('partner')->id())
+        Notification::where('user_id', Auth::id())
             ->where('notifiable_type', Candidature::class)
             ->whereIn('notifiable_id', $candidatures->pluck('id')->toArray())
             ->update(['is_read' => true]);
@@ -137,7 +137,7 @@ class PartnerController extends Controller
 
     public function notifications()
     {
-        $partner = Auth::guard('partner')->user();
+        $partner = Auth::user();
         $notifications = $partner->notifications()
             ->with('notifiable.offre', 'notifiable.etudiant')
             ->latest()
@@ -148,7 +148,7 @@ class PartnerController extends Controller
 
     public function markNotificationRead(Notification $notification)
     {
-        abort_unless($notification->user_id === Auth::guard('partner')->id(), 403);
+        abort_unless($notification->user_id === Auth::id(), 403);
 
         $notification->update(['is_read' => true]);
 
@@ -180,7 +180,7 @@ class PartnerController extends Controller
 
     private function authorizeOffre(Offre $offre): void
     {
-        abort_unless($offre->user_id === Auth::guard('partner')->id(), 403);
+        abort_unless($offre->user_id === Auth::id(), 403);
     }
 
     private function saveMedias(Request $request, Offre $offre): void
