@@ -7,7 +7,6 @@ use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\MainAuthController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\PartnerAuthController;
-use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\PartnerController;
@@ -100,24 +99,6 @@ Route::middleware(['auth', 'role:superadmin'])->prefix('admin')->group(function 
     
     Route::post('/users/{user}/make-moderator', [AdminDashboardController::class, 'makeModerator'])->name('admin.users.make-moderator');
     Route::post('/users/{user}/remove-moderator', [AdminDashboardController::class, 'removeModerator'])->name('admin.users.remove-moderator');
-});
-
-// ==================== ROUTES SUPERADMIN ====================
-Route::middleware(['auth', 'role:superadmin'])->prefix('superadmin')->group(function () {
-    Route::get('/dashboard', [SuperAdminController::class, 'dashboard'])->name('superadmin.dashboard');
-    Route::get('/enseignants', [SuperAdminController::class, 'enseignants'])->name('superadmin.enseignants');
-    Route::get('/enseignants/create', [SuperAdminController::class, 'createEnseignant'])->name('superadmin.enseignants.create');
-    Route::post('/enseignants', [SuperAdminController::class, 'storeEnseignant'])->name('superadmin.enseignants.store');
-    Route::get('/enseignants/{enseignant}/edit', [SuperAdminController::class, 'editEnseignant'])->name('superadmin.enseignants.edit');
-    Route::put('/enseignants/{enseignant}', [SuperAdminController::class, 'updateEnseignant'])->name('superadmin.enseignants.update');
-    Route::delete('/enseignants/{enseignant}', [SuperAdminController::class, 'destroyEnseignant'])->name('superadmin.enseignants.destroy');
-
-    Route::get('/etudiants', [SuperAdminController::class, 'etudiants'])->name('superadmin.etudiants');
-    Route::get('/etudiants/{etudiant}/edit', [SuperAdminController::class, 'editEtudiant'])->name('superadmin.etudiants.edit');
-    Route::put('/etudiants/{etudiant}', [SuperAdminController::class, 'updateEtudiant'])->name('superadmin.etudiants.update');
-    Route::delete('/etudiants/{etudiant}', [SuperAdminController::class, 'destroyEtudiant'])->name('superadmin.etudiants.destroy');
-
-    Route::get('/entreprises', [SuperAdminController::class, 'entreprises'])->name('superadmin.entreprises');
 });
 
 // ==================== ROUTES PARTENAIRE ====================

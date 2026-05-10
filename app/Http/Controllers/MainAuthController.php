@@ -37,7 +37,7 @@ class MainAuthController extends Controller
             $user = Auth::user();
 
             if ($user->role === 'superadmin') {
-                return $this->finishLogin($request, 'superadmin.dashboard');
+                return $this->finishLogin($request, 'admin.dashboard');
             }
 
             if ($user->role === 'enseignant') {

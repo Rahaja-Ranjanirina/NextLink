@@ -13,16 +13,20 @@
         text-size-adjust: 100%;
     }
 
-    html, body { height: 100%; overflow: hidden; }
+    html, body {
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
 
     /* ========== CONTAINER ========== */
     .dashboard-container {
         min-height: 100vh;
-        width: 100vw;
+        width: 100%;
         position: relative;
         font-family: 'Inter', sans-serif;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: visible;
     }
 
     /* ========== BACKGROUND ========== */
@@ -240,9 +244,10 @@
         display: grid;
         grid-template-columns: clamp(160px, 16vw, 240px) 1fr;
         gap: clamp(12px, 1.2vw, 20px);
-        flex: 1;
-        min-height: 0;
-        overflow: hidden;
+        flex: none;
+        align-items: start;
+        min-height: auto;
+        overflow: visible;
     }
 
     /* ========== SIDEBAR ========== */
@@ -252,7 +257,9 @@
         border: 1px solid var(--glass-border);
         border-radius: clamp(14px, 1.2vw, 20px);
         padding: clamp(10px, 1vh, 14px) clamp(6px, 0.6vw, 10px);
-        height: 100%;
+        position: sticky;
+        top: clamp(12px, 2vh, 24px);
+        max-height: calc(100vh - clamp(24px, 4vh, 48px));
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -344,8 +351,9 @@
         border: 1px solid var(--glass-border);
         border-radius: clamp(14px, 1.2vw, 20px);
         padding: clamp(14px, 1.5vw, 20px);
-        height: 100%;
-        overflow-y: auto;
+        min-height: 420px;
+        height: auto;
+        overflow-y: visible;
         overflow-x: hidden;
     }
 
