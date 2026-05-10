@@ -8,7 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html {
-        font-size: clamp(11px, 1vw, 14px); /* ← s'adapte à TOUS les écrans */
+        font-size: clamp(11px, 1vw, 14px);
         -webkit-text-size-adjust: 100%;
         text-size-adjust: 100%;
     }
@@ -176,7 +176,6 @@
 
     .stat-card:hover { transform: translateY(-2px); border-color: var(--card-border-hover); }
 
-    /* ← ICONES STATS : TAILLE ABSOLUMENT FIXE */
     .stat-icon-wrapper {
         width: 36px !important;
         height: 36px !important;
@@ -309,7 +308,6 @@
         border: 1px solid var(--accent-border);
     }
 
-    /* ← ICONES SIDEBAR : TAILLE ABSOLUMENT FIXE */
     .nav-icon {
         width: 26px !important;
         height: 26px !important;
@@ -418,7 +416,6 @@
         background: var(--btn-secondary-hover-bg);
     }
 
-    /* ← AVATAR FIXE */
     .user-avatar {
         width: 40px !important;
         height: 40px !important;
@@ -468,7 +465,6 @@
         display: inline-block;
     }
 
-    /* ← MESSAGE ICON FIXE */
     .message-icon {
         width: 28px !important;
         height: 28px !important;
@@ -498,7 +494,6 @@
 
     .user-card:hover .message-icon { background: rgba(99,102,241,0.3); }
 
-    /* ========== DELETE BUTTON ========== */
     .delete-btn {
         background: var(--btn-logout-bg);
         border: none;
@@ -606,6 +601,191 @@
     .empty-title { font-size: clamp(13px, 1vw, 15px); font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
     .empty-text { font-size: clamp(11px, 0.8vw, 13px); color: var(--text-secondary); }
 
+    /* ========== CHATBOT STYLES ========== */
+    .chatbot-container-custom {
+        background: var(--btn-secondary-bg);
+        border-radius: clamp(16px, 1.5vw, 24px);
+        border: 1px solid var(--glass-border);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: calc(70vh - 100px);
+        min-height: 450px;
+    }
+
+    .chat-messages-custom {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .message-custom {
+        display: flex;
+        gap: 12px;
+        animation: fadeInUp 0.3s ease;
+    }
+
+    .message-custom.user {
+        flex-direction: row-reverse;
+    }
+
+    .message-avatar-custom {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .bot-avatar {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        color: white;
+    }
+
+    .user-avatar-custom {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+    }
+
+    .message-content-custom {
+        max-width: 75%;
+        padding: 12px 18px;
+        border-radius: 18px;
+        font-size: 13px;
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+
+    .message-custom.bot .message-content-custom {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        color: var(--text-primary);
+        border-bottom-left-radius: 4px;
+    }
+
+    .message-custom.user .message-content-custom {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+        border-bottom-right-radius: 4px;
+    }
+
+    .quick-suggestions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px 20px;
+        border-top: 1px solid var(--glass-border);
+        border-bottom: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        align-items: center;
+    }
+
+    .suggestion-chip {
+        background: var(--accent-light);
+        border: 1px solid var(--accent-border);
+        border-radius: 100px;
+        padding: 6px 14px;
+        font-size: 12px;
+        color: var(--accent-hover);
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .suggestion-chip:hover {
+        background: var(--accent-primary);
+        color: white;
+    }
+
+    .chat-input-custom {
+        padding: 16px 20px;
+        background: var(--glass-bg);
+    }
+
+    .input-group-custom {
+        display: flex;
+        gap: 12px;
+        align-items: flex-end;
+    }
+
+    .chat-textarea {
+        flex: 1;
+        background: var(--input-bg);
+        border: 1px solid var(--input-border);
+        border-radius: 24px;
+        padding: 12px 18px;
+        color: var(--input-text);
+        font-size: 13px;
+        resize: none;
+        max-height: 100px;
+        font-family: inherit;
+    }
+
+    .chat-textarea:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+    }
+
+    .send-btn-custom {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        border: none;
+        border-radius: 100%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .send-btn-custom:hover {
+        transform: scale(1.05);
+    }
+
+    .typing-indicator-custom {
+        display: flex;
+        gap: 4px;
+        padding: 8px 16px;
+        margin-top: 8px;
+    }
+
+    .typing-indicator-custom span {
+        width: 8px;
+        height: 8px;
+        background: var(--text-muted);
+        border-radius: 50%;
+        animation: typing 1.4s infinite;
+    }
+
+    .typing-indicator-custom span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator-custom span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing {
+        0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+        30% { transform: translateY(-8px); opacity: 1; }
+    }
+
+    .btn-clear-chat {
+        background: var(--btn-secondary-bg);
+        border: 1px solid var(--btn-secondary-border);
+        border-radius: 100px;
+        padding: 6px 14px;
+        font-size: 11px;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn-clear-chat:hover {
+        background: var(--accent-light);
+        color: var(--text-primary);
+    }
+
     /* ========== ANIMATIONS ========== */
     @keyframes fadeInUp {
         from { opacity: 0; transform: translateY(20px); }
@@ -619,11 +799,7 @@
 
     .pulse { animation: pulse 2s ease-in-out infinite; }
 
-    /* ============================================
-       RESPONSIVE MOBILE UNIQUEMENT
-       (le clamp() gère tout le reste)
-       ============================================ */
-
+    /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
         html { font-size: 14px; }
         html, body { overflow: auto; height: auto; }
@@ -654,6 +830,11 @@
         .stats-grid { grid-template-columns: 1fr !important; }
         .user-avatar-large { width: 45px; height: 45px; }
         .greeting-title { font-size: 18px; }
+        
+        .chatbot-container-custom { height: 500px; }
+        .message-content-custom { max-width: 85%; font-size: 12px; }
+        .quick-suggestions { gap: 6px; flex-wrap: wrap; }
+        .suggestion-chip { font-size: 10px; padding: 4px 10px; }
     }
 
     @media (max-width: 480px) {
@@ -700,7 +881,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="logout-btn">
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
                         </svg>
                         Déconnexion
@@ -720,7 +901,7 @@
                 <div class="stat-number">{{ $offres->count() }}</div>
                 <div class="stat-label">Offres disponibles</div>
                 <div class="stat-trend">
-                    <svg class="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg width="8" height="8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                     </svg>
                     Nouveautés
@@ -736,7 +917,7 @@
                 <div class="stat-number">{{ $mesCandidatures->count() }}</div>
                 <div class="stat-label">Candidatures</div>
                 <div class="stat-trend" style="color: #60a5fa;">
-                    <svg class="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg width="8" height="8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
                     </svg>
                     {{ $mesCandidatures->count() }} total
@@ -752,7 +933,7 @@
                 <div class="stat-number">{{ $mesCandidatures->where('statut', 'en_attente')->count() }}</div>
                 <div class="stat-label">En attente</div>
                 <div class="stat-trend pulse" style="color: #fbbf24;">
-                    <svg class="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg width="8" height="8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                     Imminente
@@ -812,6 +993,16 @@
                     <span>Forum étudiant</span>
                 </a>
 
+                {{-- BOUTON ASSISTANT IA TELECOM --}}
+                <button onclick="showSection('chatbot')" id="btn-chatbot" class="nav-link">
+                    <span class="nav-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/>
+                        </svg>
+                    </span>
+                    <span>🤖 Assistant IA Télécom</span>
+                </button>
+
                 <div class="nav-section-title">👥 Communauté</div>
                 
                 <button onclick="showSection('etudiants')" id="btn-etudiants" class="nav-link active">
@@ -832,7 +1023,6 @@
                     <span>Enseignants</span>
                 </button>
 
-                {{-- Bouton Ajouter Étudiant (visible uniquement pour les modérateurs) --}}
                 @if($isModerator)
                 <div class="nav-section-title" style="margin-top: 20px;">➕ Administration</div>
                 <button onclick="openAddStudentModal()" class="nav-link">
@@ -892,7 +1082,6 @@
                                             </svg>
                                         </div>
                                     </a>
-                                    {{-- Bouton supprimer (visible uniquement pour les modérateurs) --}}
                                     @if($isModerator && $etudiant->id !== auth()->id())
                                     <form method="POST" action="{{ route('admin.students.destroy', $etudiant) }}" onsubmit="return confirm('Supprimer cet étudiant ?')" style="display: inline;">
                                         @csrf
@@ -958,7 +1147,6 @@
                                             </svg>
                                         </div>
                                     </a>
-                                    {{-- Bouton supprimer (visible uniquement pour les modérateurs) --}}
                                     @if($isModerator)
                                     <form method="POST" action="{{ route('admin.enseignants.destroy', $enseignant) }}" onsubmit="return confirm('Supprimer cet enseignant ?')" style="display: inline;">
                                         @csrf
@@ -987,6 +1175,88 @@
                             <p class="empty-text">Aucun enseignant n'est inscrit pour le moment.</p>
                         </div>
                     @endif
+                </div>
+
+                {{-- SECTION ASSISTANT IA TELECOM --}}
+                <div id="chatbot-section" style="display: none;">
+                    <div class="section-header">
+                        <h2 class="section-title">🤖 Assistant IA - Expert en Télécommunications</h2>
+                        <div style="display: flex; gap: 8px;">
+                            <button onclick="clearChat()" class="btn-clear-chat">
+                                🗑️ Effacer
+                            </button>
+                            <button onclick="toggleSuggestions()" class="btn-clear-chat" id="toggleSuggestionsBtn" style="background: var(--accent-light); color: var(--accent-hover);">
+                                💡 Suggestions ▼
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="chatbot-container-custom">
+                        {{-- Zone des messages --}}
+                        <div class="chat-messages-custom" id="chatMessages">
+                            <div class="message-custom bot">
+                                <div class="message-avatar-custom bot-avatar">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                        <path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/>
+                                    </svg>
+                                </div>
+                                <div class="message-content-custom">
+                                    📡 <strong>Bienvenue ! Je suis TELECOM-BOT</strong> 👋<br><br>
+                                    Je suis votre assistant IA spécialisé en <strong>Télécommunications et Réseaux</strong>.<br><br>
+                                    
+                                    ✨ <strong>Posez-moi n'importe quelle question en français</strong> ✨<br><br>
+                                    
+                                    💬 <strong>Domaines de compétence :</strong><br>
+                                    • 📶 5G, 4G, WiFi, Fibre optique<br>
+                                    • 🌐 Réseaux IP, VLAN, TCP/IP, OSI<br>
+                                    • 🔒 Cybersécurité réseau, pare-feu, VPN<br>
+                                    • 🎓 Certifications CCNA, CCNP, AWS<br>
+                                    • 💼 Stages, emplois, salaires, métiers<br>
+                                    • 📄 CV, lettres, entretiens d'embauche<br>
+                                    • ☁️ Cloud networking (AWS, Azure)<br>
+                                    • 📡 IoT, SD-WAN, MQTT<br><br>
+                                    
+                                    <strong>💬 Écrivez votre question librement ci-dessous !</strong><br><br>
+                                    
+                                    📝 <strong>Exemples :</strong><br>
+                                    • "C'est quoi la différence entre TCP et UDP ?"<br>
+                                    • "Comment préparer un entretien pour un stage réseau ?"<br>
+                                    • "Quelles certifications sont les plus recherchées ?"<br>
+                                    • "Explique-moi le modèle OSI simplement"
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {{-- Suggestions rapides (réductibles) --}}
+                        <div class="quick-suggestions" id="quickSuggestions">
+                            <span style="font-size: 11px; color: var(--text-muted); margin-right: 8px;">⚡ Suggestions :</span>
+                            <button class="suggestion-chip" onclick="sendQuickMessage('stage')">💼 Stages</button>
+                            <button class="suggestion-chip" onclick="sendQuickMessage('5g')">📶 5G</button>
+                            <button class="suggestion-chip" onclick="sendQuickMessage('fibre')">🔍 Fibre</button>
+                            <button class="suggestion-chip" onclick="sendQuickMessage('ccna')">🎓 CCNA</button>
+                            <button class="suggestion-chip" onclick="sendQuickMessage('cv')">📄 CV</button>
+                            <button class="suggestion-chip" onclick="sendQuickMessage('entretien')">🎤 Entretien</button>
+                            <button class="suggestion-chip" onclick="sendQuickMessage('tcp')">🌐 TCP/UDP</button>
+                            <button class="suggestion-chip" onclick="sendQuickMessage('vlan')">🔌 VLAN</button>
+                            <button class="suggestion-chip" onclick="sendQuickMessage('salaire')">💰 Salaires</button>
+                            <button class="suggestion-chip" onclick="sendQuickMessage('cybersecurite')">🔒 Cyber</button>
+                        </div>
+                        
+                        {{-- Zone de saisie --}}
+                        <div class="chat-input-custom">
+                            <div class="input-group-custom">
+                                <textarea id="chatInput" class="chat-textarea" placeholder="Écrivez votre question sur les télécoms... (ex: Comment trouver un stage ?)" rows="1" onkeypress="handleKeyPress(event)"></textarea>
+                                <button onclick="sendMessage()" class="send-btn-custom" id="sendBtn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="typing-indicator-custom" id="typingIndicator" style="display: none;">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
@@ -1029,20 +1299,25 @@
 </div>
 
 <script>
+    // ========== FONCTIONS EXISTANTES ==========
     function showSection(section) {
-        // Hide all sections
         document.getElementById('etudiants-section').style.display = 'none';
         document.getElementById('enseignants-section').style.display = 'none';
+        document.getElementById('chatbot-section').style.display = 'none';
         
-        // Remove active class from all buttons
         document.getElementById('btn-etudiants').classList.remove('active');
         document.getElementById('btn-enseignants').classList.remove('active');
+        document.getElementById('btn-chatbot').classList.remove('active');
         
-        // Show selected section
         document.getElementById(section + '-section').style.display = 'block';
-        
-        // Add active class to selected button
         document.getElementById('btn-' + section).classList.add('active');
+        
+        if (section === 'chatbot') {
+            setTimeout(function() {
+                var container = document.querySelector('.chat-messages-custom');
+                if (container) container.scrollTop = container.scrollHeight;
+            }, 100);
+        }
     }
     
     function openAddStudentModal() {
@@ -1057,12 +1332,138 @@
         document.getElementById(modalId).classList.remove('active');
     }
     
-    // Close modal on outside click
-    document.querySelectorAll('.modal-overlay').forEach(modal => {
+    document.querySelectorAll('.modal-overlay').forEach(function(modal) {
         modal.addEventListener('click', function(e) {
             if (e.target === this) this.classList.remove('active');
         });
     });
+    
+    // ========== FONCTIONS CHATBOT ==========
+    var isTyping = false;
+    var suggestionsVisible = true;
+    
+    async function sendMessage() {
+        var input = document.getElementById('chatInput');
+        var message = input.value.trim();
+        
+        if (!message || isTyping) return;
+        
+        input.value = '';
+        input.style.height = 'auto';
+        
+        addMessage(message, 'user');
+        
+        isTyping = true;
+        document.getElementById('typingIndicator').style.display = 'flex';
+        var sendBtn = document.getElementById('sendBtn');
+        sendBtn.disabled = true;
+        
+        try {
+            var response = await fetch('{{ route("chatbot.send") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ message: message })
+            });
+            
+            var data = await response.json();
+            
+            document.getElementById('typingIndicator').style.display = 'none';
+            
+            if (data.success) {
+                addMessage(data.response, 'bot');
+            } else {
+                addMessage("🔧 Désolé, une erreur s'est produite. Veuillez réessayer.", 'bot');
+            }
+        } catch (error) {
+            document.getElementById('typingIndicator').style.display = 'none';
+            addMessage("🔧 Problème de connexion. Vérifiez votre réseau.", 'bot');
+        } finally {
+            isTyping = false;
+            sendBtn.disabled = false;
+        }
+    }
+    
+    function addMessage(text, sender) {
+        var container = document.getElementById('chatMessages');
+        var messageDiv = document.createElement('div');
+        messageDiv.className = 'message-custom ' + sender;
+        
+        var avatar = '';
+        if (sender === 'bot') {
+            avatar = '<div class="message-avatar-custom bot-avatar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg></div>';
+        } else {
+            avatar = '<div class="message-avatar-custom user-avatar-custom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>';
+        }
+        
+        var formattedText = text
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/`(.*?)`/g, '<code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 6px;">$1</code>')
+            .replace(/\n/g, '<br>');
+        
+        messageDiv.innerHTML = avatar + '<div class="message-content-custom">' + formattedText + '</div>';
+        container.appendChild(messageDiv);
+        
+        container.scrollTop = container.scrollHeight;
+    }
+    
+    function sendQuickMessage(topic) {
+        var messages = {
+            'stage': "Où trouver un bon stage en télécommunications ? Donne-moi des conseils.",
+            '5g': "Explique-moi la 5G simplement, comme si j'avais 15 ans.",
+            'fibre': "C'est quoi la fibre optique ? Comment ça marche techniquement ?",
+            'ccna': "Parle-moi de la certification CCNA, combien de temps pour la préparer ?",
+            'cv': "Donne-moi des conseils pour améliorer mon CV en télécom.",
+            'entretien': "Comment bien préparer un entretien pour un stage en réseau ?",
+            'tcp': "Quelle est la différence entre TCP et UDP ?",
+            'vlan': "C'est quoi un VLAN ? À quoi ça sert ?",
+            'salaire': "Quels sont les salaires dans le secteur des télécoms pour un débutant ?",
+            'cybersecurite': "C'est quoi la cybersécurité réseau ? Comment s'y former ?"
+        };
+        
+        document.getElementById('chatInput').value = messages[topic];
+        sendMessage();
+    }
+    
+    function handleKeyPress(event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            sendMessage();
+        }
+    }
+    
+    function clearChat() {
+        var container = document.getElementById('chatMessages');
+        var firstMessage = container.children[0];
+        container.innerHTML = '';
+        container.appendChild(firstMessage.cloneNode(true));
+    }
+    
+    function toggleSuggestions() {
+        var suggestions = document.getElementById('quickSuggestions');
+        var btn = document.getElementById('toggleSuggestionsBtn');
+        
+        if (suggestionsVisible) {
+            suggestions.style.display = 'none';
+            btn.innerHTML = '💡 Suggestions ▲';
+            btn.style.background = 'var(--btn-secondary-bg)';
+        } else {
+            suggestions.style.display = 'flex';
+            btn.innerHTML = '💡 Suggestions ▼';
+            btn.style.background = 'var(--accent-light)';
+        }
+        suggestionsVisible = !suggestionsVisible;
+    }
+    
+    var chatInput = document.getElementById('chatInput');
+    if (chatInput) {
+        chatInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+        });
+    }
 </script>
 
 @endsection

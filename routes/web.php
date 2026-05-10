@@ -14,6 +14,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\Student\CvController;
 use App\Http\Controllers\Student\ForumController;
 use App\Http\Controllers\Student\PrivateMessageController;
+use App\Http\Controllers\ChatbotController;
 
 // ==================== ROUTES PUBLIQUES ====================
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
@@ -46,7 +47,7 @@ Route::middleware(['auth', 'role:etudiant'])->prefix('student')->group(function 
 
     // MESSAGES PRIVÉS - CORRIGÉ
     Route::get('/messages', [PrivateMessageController::class, 'index'])->name('student.messages.index');
-    Route::get('/messages/{user}', [PrivateMessageController::class, 'chat'])->name('student.messages.chat'); // Changé {student} à {user}
+    Route::get('/messages/{user}', [PrivateMessageController::class, 'chat'])->name('student.messages.chat');
     Route::post('/messages/store', [PrivateMessageController::class, 'store'])->name('student.messages.store');
 
     Route::post('/cv/update', [CvController::class, 'update'])->name('student.cv.update');
@@ -140,6 +141,10 @@ Route::middleware(['auth', 'role:entreprise'])->prefix('partner')->group(functio
     Route::get('/candidatures/{candidature}/download/{type}', [PartnerController::class, 'downloadCandidature'])->name('partner.candidatures.download');
     Route::post('/logout', [PartnerAuthController::class, 'logout'])->name('partner.logout');
 });
+
+// ==================== ROUTE CHATBOT ====================
+// Route pour l'assistant IA (accessible à tous les utilisateurs authentifiés)
+Route::middleware(['auth'])->post('/chatbot/send', [ChatbotController::class, 'send'])->name('chatbot.send');
 
 // ==================== REDIRECTION ====================
 Route::get('/dashboard', function () {
